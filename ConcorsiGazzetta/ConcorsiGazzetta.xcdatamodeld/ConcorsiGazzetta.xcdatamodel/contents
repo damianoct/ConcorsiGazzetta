@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="Contest" representedClassName=".DDSContestItem" syncable="YES">
+        <attribute name="areaOfInterest" attributeType="String" syncable="YES"/>
+        <attribute name="code" attributeType="String" syncable="YES"/>
+        <attribute name="contestTitle" attributeType="String" syncable="YES"/>
+        <attribute name="deadline" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="numberOfArticles" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="subject" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="gazzetta" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gazzetta" inverseName="contests" inverseEntity="Gazzetta" syncable="YES"/>
+    </entity>
+    <entity name="Gazzetta" representedClassName=".DDSGazzettaItem" syncable="YES">
+        <attribute name="dateOfPublication" attributeType="Date" syncable="YES"/>
+        <attribute name="numberOfContests" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfExpiringContests" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfPublication" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="contests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contest" inverseName="gazzetta" inverseEntity="Contest" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Contest" positionX="-36" positionY="9" width="128" height="165"/>
+        <element name="Gazzetta" positionX="223" positionY="-108" width="128" height="120"/>
+    </elements>
 </model>

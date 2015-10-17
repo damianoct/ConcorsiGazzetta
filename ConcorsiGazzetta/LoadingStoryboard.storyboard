@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SaE-jh-29m">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Loading View Controller-->
+        <scene sceneID="qeM-4n-4p9">
+            <objects>
+                <viewController id="SaE-jh-29m" customClass="DDSLoadingViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cnn-Gf-08U"/>
+                        <viewControllerLayoutGuide type="bottom" id="sh6-h3-G9e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c2m-RC-lyM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyO-an-5Ei" customClass="MRActivityIndicatorView">
+                                <rect key="frame" x="275" y="275" width="40" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.14509804546833038" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="MYC-tj-4qW"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZD1-eO-3Ta"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cravatta" translatesAutoresizingMaskIntoConstraints="NO" id="YHu-hY-Zzw">
+                                <rect key="frame" x="245" y="133" width="100" height="100"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="d6q-ia-1N7"/>
+                                    <constraint firstAttribute="height" constant="100" id="deR-Hd-amo"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.14509804549999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gyO-an-5Ei" firstAttribute="top" secondItem="YHu-hY-Zzw" secondAttribute="bottom" constant="42" id="7Eh-0J-dLr"/>
+                            <constraint firstItem="gyO-an-5Ei" firstAttribute="centerY" secondItem="c2m-RC-lyM" secondAttribute="centerY" constant="-5" id="AGr-wg-7vq"/>
+                            <constraint firstItem="YHu-hY-Zzw" firstAttribute="centerX" secondItem="c2m-RC-lyM" secondAttribute="centerX" constant="-5" id="B31-lN-lj7"/>
+                            <constraint firstItem="gyO-an-5Ei" firstAttribute="centerX" secondItem="c2m-RC-lyM" secondAttribute="centerX" constant="-5" id="DLJ-tL-mfR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appLogo" destination="YHu-hY-Zzw" id="9y1-Fn-WUQ"/>
+                        <outlet property="circularActivityIndicator" destination="gyO-an-5Ei" id="gWa-Pe-H9p"/>
+                        <segue destination="c0a-e6-0sw" kind="show" identifier="showMainSB" id="jdU-Ha-89v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc3-Bs-Fy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1701" y="244"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="SOL-PN-oLf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="c0a-e6-0sw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rdh-Wq-O3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1268" y="244"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Cravatta" width="150" height="150"/>
+    </resources>
+</document>

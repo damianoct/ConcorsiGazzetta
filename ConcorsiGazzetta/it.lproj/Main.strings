@@ -1,0 +1,69 @@
+
+/* Class = "UINavigationController"; title = "Detail Navigation Controller"; ObjectID = "5OK-j2-VO3"; */
+"5OK-j2-VO3.title" = "Detail Navigation Controller";
+
+/* Class = "UILabel"; text = "60 gazzette"; ObjectID = "6kv-TH-TTq"; */
+"6kv-TH-TTq.text" = "60 gazzette";
+
+/* Class = "UINavigationController"; title = "Impostazioni Navigation"; ObjectID = "8ib-nu-B41"; */
+"8ib-nu-B41.title" = "Impostazioni Navigation";
+
+/* Class = "UINavigationController"; title = "Gazzette Navigation"; ObjectID = "D5f-4N-Vzw"; */
+"D5f-4N-Vzw.title" = "Gazzette Navigation";
+
+/* Class = "UITableViewController"; title = "Gazzette Table View"; ObjectID = "EaD-wx-jo1"; */
+"EaD-wx-jo1.title" = "Gazzette Table View";
+
+/* Class = "UITabBarItem"; title = "Impostazioni"; ObjectID = "FEZ-rn-ia9"; */
+"FEZ-rn-ia9.title" = "Impostazioni";
+
+/* Class = "UITableViewSection"; headerTitle = "Connessione"; ObjectID = "GEJ-cx-pq0"; */
+"GEJ-cx-pq0.headerTitle" = "Connessione";
+
+/* Class = "UILabel"; text = "30 gazzette"; ObjectID = "HIC-cA-nUa"; */
+"HIC-cA-nUa.text" = "30 gazzette";
+
+/* Class = "UITableViewController"; title = "Impostazioni TableView"; ObjectID = "Jen-fT-8XB"; */
+"Jen-fT-8XB.title" = "Impostazioni TableView";
+
+/* Class = "UITableViewController"; title = "Numero Gazzette"; ObjectID = "KQL-F3-BoQ"; */
+"KQL-F3-BoQ.title" = "Numero Gazzette";
+
+/* Class = "UILabel"; text = "Azzera statistiche"; ObjectID = "Kpt-i1-qat"; */
+"Kpt-i1-qat.text" = "Azzera statistiche";
+
+/* Class = "UILabel"; text = "15 gazzette"; ObjectID = "Ok8-xg-ISj"; */
+"Ok8-xg-ISj.text" = "15 gazzette";
+
+/* Class = "UINavigationItem"; title = "Impostazioni"; ObjectID = "R2b-aX-dCF"; */
+"R2b-aX-dCF.title" = "Impostazioni";
+
+/* Class = "UITabBarItem"; title = "Concorsi"; ObjectID = "V0C-hD-mjl"; */
+"V0C-hD-mjl.title" = "Concorsi";
+
+/* Class = "UILabel"; text = "0,532 KBytes"; ObjectID = "Vgc-vp-DUs"; */
+"Vgc-vp-DUs.text" = "0,532 KBytes";
+
+/* Class = "UILabel"; text = "Utilizzo"; ObjectID = "cdz-Yu-3ah"; */
+"cdz-Yu-3ah.text" = "Utilizzo";
+
+/* Class = "UITableViewSection"; headerTitle = "Visualizzazione"; ObjectID = "dUS-rp-KwU"; */
+"dUS-rp-KwU.headerTitle" = "Visualizzazione";
+
+/* Class = "UILabel"; text = "Numero Gazzette"; ObjectID = "h3O-6C-uOn"; */
+"h3O-6C-uOn.text" = "Numero Gazzette";
+
+/* Class = "UIBarButtonItem"; title = "Impostazioni"; ObjectID = "iiu-LU-8ji"; */
+"iiu-LU-8ji.title" = "Impostazioni";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jdY-zA-B6c"; */
+"jdY-zA-B6c.text" = "Label";
+
+/* Class = "UITableViewController"; title = "Search Result TableView"; ObjectID = "vUQ-2l-WJA"; */
+"vUQ-2l-WJA.title" = "Search Result TableView";
+
+/* Class = "UILabel"; text = "60 gazzette"; ObjectID = "vwt-T7-Wbh"; */
+"vwt-T7-Wbh.text" = "60 gazzette";
+
+/* Class = "UILabel"; text = "45 gazzette"; ObjectID = "wqp-Pg-aW9"; */
+"wqp-Pg-aW9.text" = "45 gazzette";
