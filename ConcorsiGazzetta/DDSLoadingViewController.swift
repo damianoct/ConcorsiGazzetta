@@ -77,10 +77,9 @@ class DDSLoadingViewController: UIViewController
         dispatch_async(dispatch_get_main_queue(),
             {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initial = storyboard.instantiateInitialViewController() as! DDSSplitViewController
-                initial.delegate = initial
-                initial.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                self.presentViewController(initial, animated: true, completion: nil)
+                let initial = storyboard.instantiateInitialViewController()
+                initial!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                self.presentViewController(initial!, animated: true, completion: nil)
             })
         
  

@@ -138,6 +138,16 @@ class DDSGazzetteTBC: UITableViewController
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        performSegueWithIdentifier("segueDetail", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        
+    }
+    
     //MARK: Ordering Function
     
     private func orderFunction(alertAction: UIAlertAction) -> ()
