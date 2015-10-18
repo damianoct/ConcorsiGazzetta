@@ -16,30 +16,21 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
     
     override func viewDidLoad()
     {
-        if ADBannerView.instancesRespondToSelector("initWithAdType")
-        {
-            bannerView = ADBannerView(adType: .Banner)
-        }
-        else
-        {
-            bannerView = ADBannerView()
-        }
-        
-        bannerView!.delegate = self
-        self.view.addSubview(bannerView!)
+        bannerView = BannerViewManager.shareInstance.bannerView
         contentController = self.childViewControllers[0]
-        print(contentController)
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        BannerViewManager.shareInstance.addBannerViewController(bannerViewController: self)
     }
     
     override func viewDidLayoutSubviews()
     {
         var contentFrame = self.view.bounds
         var bannerFrame = CGRectZero;
-            
         
-        
-        // Ask the banner for a size that fits into the layout area we are using.
-        // At this point in this method contentFrame=self.view.bounds, so we'll use that size for the layout.
         bannerFrame.size = self.bannerView!.sizeThatFits(contentFrame.size)
             
         if self.bannerView!.bannerLoaded
@@ -47,12 +38,26 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
             contentFrame.size.height -= bannerFrame.size.height
             bannerFrame.origin.y = contentFrame.size.height
         }
+            
         else
         {
             bannerFrame.origin.y = contentFrame.size.height
         }
+        
         self.contentController!.view.frame = contentFrame
-        self.bannerView!.frame = bannerFrame
+        
+        bannerView!.frame = bannerFrame
+        view.addSubview(bannerView!)
+
+//        if let _ = view.window
+//        {
+//            if isViewLoaded()
+//            {
+//                bannerView!.frame = bannerFrame
+//                view.addSubview(bannerView!)
+//                view.layoutSubviews()
+//            }
+//        }
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
@@ -60,28 +65,9 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
         return contentController!.preferredInterfaceOrientationForPresentation()
     }
     
-    func bannerViewDidLoadAd(banner: ADBannerView!)
+    func updateLayout()
     {
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
     }
-    
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!)
-    {
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
-    }
-    
-    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool
-    {
-        
-    NSNotificationCenter.defaultCenter().postNotificationName("BannerViewActionWillBegin", object: self)
-        return true
-    }
-    
-    func bannerViewActionDidFinish(banner: ADBannerView!)
-    {
-        NSNotificationCenter.defaultCenter().postNotificationName("BannerViewActionDidFinish", object: self)
-    }
-    
 }

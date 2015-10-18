@@ -16,7 +16,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kQ-Fz-UsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="47"/>
+            <point key="canvasLocation" x="593" y="46.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rIY-go-Ead">
@@ -35,6 +35,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
+                        <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NP-Xb-H3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,7 +63,6 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.8980392157" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="PjN-YW-bk9"/>
                     <connections>
@@ -71,9 +71,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9E-eN-lHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="1035"/>
+            <point key="canvasLocation" x="1465" y="955"/>
         </scene>
-        <!--Item-->
+        <!--Concorsi-->
         <scene sceneID="K29-of-JlY">
             <objects>
                 <viewController id="V5H-q7-QN2" customClass="BannerViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,7 +103,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="ZcC-WH-bdN"/>
+                    <tabBarItem key="tabBarItem" title="Concorsi" image="Megafono_Empty" selectedImage="Megafono_Fill" id="ZcC-WH-bdN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccz-UH-TfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,7 +131,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vew-6v-4Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="557" y="1035"/>
+            <point key="canvasLocation" x="593" y="955"/>
         </scene>
         <!--Impostazioni Navigation-->
         <scene sceneID="iUT-Fc-5XF">
@@ -154,14 +154,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQV-RY-udJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-499" y="-1038"/>
+            <point key="canvasLocation" x="593" y="-865.5"/>
         </scene>
         <!--Impostazioni TableView-->
         <scene sceneID="cmh-yY-Bpn">
             <objects>
                 <tableViewController title="Impostazioni TableView" id="Jen-fT-8XB" customClass="DDSSettingsTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="5Rd-4O-g8U">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,7 +169,7 @@
                             <tableViewSection headerTitle="Visualizzazione" id="dUS-rp-KwU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="h3O-6C-uOn" detailTextLabel="vwt-T7-Wbh" imageView="asC-7r-icy" style="IBUITableViewCellStyleValue1" id="i4P-Mg-PFB">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i4P-Mg-PFB" id="kz4-iX-vFL">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -217,7 +217,7 @@
                             <tableViewSection headerTitle="Connessione" id="GEJ-cx-pq0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="cdz-Yu-3ah" detailTextLabel="Vgc-vp-DUs" imageView="qXe-g8-E5o" style="IBUITableViewCellStyleValue1" id="raZ-jm-w9V">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="189" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="raZ-jm-w9V" id="0St-sd-aIL">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -254,7 +254,7 @@
                             <tableViewSection id="15X-lQ-1I9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Kpt-i1-qat" style="IBUITableViewCellStyleDefault" id="hAt-Nz-6A1">
-                                        <rect key="frame" x="0.0" y="289" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="269" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hAt-Nz-6A1" id="KCf-Y0-MWq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -287,14 +287,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxR-sp-AiG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="428" y="-1038"/>
+            <point key="canvasLocation" x="1465" y="-865.5"/>
         </scene>
         <!--Numero Gazzette-->
         <scene sceneID="QqZ-s8-5Ec">
             <objects>
                 <tableViewController title="Numero Gazzette" id="KQL-F3-BoQ" customClass="DDSSettingsGazzetteNumberTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Llg-WY-eoa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -302,7 +302,7 @@
                             <tableViewSection id="K1h-nq-z58">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberOfGazzetteToViewCell" textLabel="Ok8-xg-ISj" style="IBUITableViewCellStyleDefault" id="I4N-FU-R7B">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="79" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I4N-FU-R7B" id="Cy2-8Q-mMC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -324,7 +324,7 @@
                                         <accessibility key="accessibilityConfiguration" identifier=""/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberOfGazzetteToViewCell" textLabel="HIC-cA-nUa" style="IBUITableViewCellStyleDefault" id="C4E-Qz-sad">
-                                        <rect key="frame" x="0.0" y="143" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="123" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C4E-Qz-sad" id="wHY-To-F4Y">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -346,7 +346,7 @@
                                         <accessibility key="accessibilityConfiguration" identifier=""/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberOfGazzetteToViewCell" textLabel="wqp-Pg-aW9" style="IBUITableViewCellStyleDefault" id="miI-ck-7ia">
-                                        <rect key="frame" x="0.0" y="187" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="167" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="miI-ck-7ia" id="qHM-8O-ufY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -368,7 +368,7 @@
                                         <accessibility key="accessibilityConfiguration" identifier=""/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberOfGazzetteToViewCell" textLabel="6kv-TH-TTq" style="IBUITableViewCellStyleDefault" id="ybR-9U-60J">
-                                        <rect key="frame" x="0.0" y="231" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="211" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybR-9U-60J" id="khr-o6-hRC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -400,7 +400,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzy-lr-qJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1326" y="-1038"/>
+            <point key="canvasLocation" x="2316" y="-865.5"/>
         </scene>
         <!--Search Result TableView-->
         <scene sceneID="GmG-bQ-hUa">
@@ -432,12 +432,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcw-He-MTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-499" y="-1805"/>
+            <point key="canvasLocation" x="3121" y="47"/>
         </scene>
         <!--iAd Gazzette Navigation-->
         <scene sceneID="2NH-la-Zz0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="puV-nV-A8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="iAd Gazzette Navigation" id="Oa4-9S-tFf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="iAd Concorsi" image="Megafono_Empty" selectedImage="Megafono_Fill" id="vf2-YF-DTI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="6Yp-xJ-OTK">
@@ -454,6 +453,7 @@
                         <segue destination="gLz-v4-zHU" kind="relationship" relationship="rootViewController" id="OWY-Fn-V67"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="puV-nV-A8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1465" y="47"/>
         </scene>
@@ -505,6 +505,42 @@
             </objects>
             <point key="canvasLocation" x="2316" y="47"/>
         </scene>
+        <!--Impostazioni-->
+        <scene sceneID="r4o-eI-Pvf">
+            <objects>
+                <viewController id="6Ya-Kr-lVB" customClass="BannerViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yQr-Ox-fhx"/>
+                        <viewControllerLayoutGuide type="bottom" id="c2f-cr-M59"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0qT-3m-LmX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycc-bJ-XWp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="8ib-nu-B41" kind="embed" id="GYS-x3-P3z"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ycc-bJ-XWp" firstAttribute="centerX" secondItem="0qT-3m-LmX" secondAttribute="centerX" id="Cd8-4L-f7X"/>
+                            <constraint firstItem="ycc-bJ-XWp" firstAttribute="width" secondItem="0qT-3m-LmX" secondAttribute="width" id="TIT-Oq-TKF"/>
+                            <constraint firstItem="ycc-bJ-XWp" firstAttribute="centerY" secondItem="0qT-3m-LmX" secondAttribute="centerY" id="cvh-at-M3T"/>
+                            <constraint firstItem="ycc-bJ-XWp" firstAttribute="height" secondItem="0qT-3m-LmX" secondAttribute="height" id="iq9-xO-mse"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <tabBarItem key="tabBarItem" title="Impostazioni" image="Settings_Empty" selectedImage="Settings_Full" id="OUI-WY-3Me"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xkF-aD-ztc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-227" y="-865"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Antenna" width="40" height="40"/>
@@ -516,6 +552,6 @@
         <image name="Settings_Full" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LXg-zG-Waq"/>
+        <segue reference="ocS-ui-LwH"/>
     </inferredMetricsTieBreakers>
 </document>

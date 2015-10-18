@@ -25,6 +25,7 @@
 		D15507AD1BCB03A50019635D /* DDSGazzettaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15507AC1BCB03A50019635D /* DDSGazzettaCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
 		D1643BD31BCA9E84007591BE /* DDSDetailNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD21BCA9E84007591BE /* DDSDetailNavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D1643BD51BCA9E8B007591BE /* DDSDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD41BCA9E8B007591BE /* DDSDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D169F5961BD4120A00AEECDD /* BannerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F5951BD4120A00AEECDD /* BannerViewManager.swift */; settings = {ASSET_TAGS = (); }; };
 		D18F91F91BCABF870000EDF9 /* LoadingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18F91F81BCABF870000EDF9 /* LoadingStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		D19E16FF1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E16FD1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift */; settings = {ASSET_TAGS = (); }; };
 		D19E17001BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E16FE1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib */; settings = {ASSET_TAGS = (); }; };
@@ -79,6 +80,7 @@
 		D15507AC1BCB03A50019635D /* DDSGazzettaCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDSGazzettaCustomCell.xib; sourceTree = "<group>"; };
 		D1643BD21BCA9E84007591BE /* DDSDetailNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDetailNavigationViewController.swift; sourceTree = "<group>"; };
 		D1643BD41BCA9E8B007591BE /* DDSDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDetailViewController.swift; sourceTree = "<group>"; };
+		D169F5951BD4120A00AEECDD /* BannerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewManager.swift; sourceTree = "<group>"; };
 		D18F91F81BCABF870000EDF9 /* LoadingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoadingStoryboard.storyboard; sourceTree = "<group>"; };
 		D19E16FD1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSGazzettaCustomCellWithExpiring.swift; sourceTree = "<group>"; };
 		D19E16FE1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDSGazzettaCustomCellWithExpiring.xib; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D1DB1E5D1BCA8E4B0076F48C /* AppDelegate.swift */,
 				D15507A71BCADB170019635D /* DDSNavigationAnimator.swift */,
 				D1DB1E5F1BCA8E4B0076F48C /* BannerViewController.swift */,
+				D169F5951BD4120A00AEECDD /* BannerViewManager.swift */,
 				D1DB1E611BCA8E4B0076F48C /* Main.storyboard */,
 				D18F91F81BCABF870000EDF9 /* LoadingStoryboard.storyboard */,
 				D1DB1E641BCA8E4B0076F48C /* ConcorsiGazzetta.xcdatamodeld */,
@@ -440,6 +443,7 @@
 				D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */,
 				D109BD271BCA91CC009FC24A /* DDSContestItem.swift in Sources */,
 				D1643BD51BCA9E8B007591BE /* DDSDetailViewController.swift in Sources */,
+				D169F5961BD4120A00AEECDD /* BannerViewManager.swift in Sources */,
 				D15507A61BCAC4A70019635D /* DDSNavigationController.swift in Sources */,
 				D1EA9AFF1BCC094400487174 /* DDSGazzetteTBC.swift in Sources */,
 				D1DB1E661BCA8E4B0076F48C /* ConcorsiGazzetta.xcdatamodeld in Sources */,
