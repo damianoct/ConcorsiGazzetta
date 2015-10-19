@@ -405,7 +405,7 @@
         <!--Search Result TableView-->
         <scene sceneID="GmG-bQ-hUa">
             <objects>
-                <tableViewController storyboardIdentifier="searchResultTableView" title="Search Result TableView" id="vUQ-2l-WJA" customClass="DDSSearchTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchResultTableView" title="Search Result TableView" automaticallyAdjustsScrollViewInsets="NO" id="vUQ-2l-WJA" customClass="DDSSearchTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="hCZ-TI-jHj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,6 +428,7 @@
                             <outlet property="delegate" destination="vUQ-2l-WJA" id="EfT-qO-4wE"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="Q5m-pg-cjI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcw-He-MTR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,12 +18,13 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
     {
         bannerView = BannerViewManager.shareInstance.bannerView
         contentController = self.childViewControllers[0]
+        BannerViewManager.shareInstance.addBannerViewController(bannerViewController: self)
     }
     
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        BannerViewManager.shareInstance.addBannerViewController(bannerViewController: self)
+        view.addSubview(bannerView!)
     }
     
     override func viewDidLayoutSubviews()
@@ -41,23 +42,24 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
             
         else
         {
-            bannerFrame.origin.y = contentFrame.size.height
+            bannerFrame.origin.y = 2 * contentFrame.size.height
         }
         
         self.contentController!.view.frame = contentFrame
         
-        bannerView!.frame = bannerFrame
-        view.addSubview(bannerView!)
+//        bannerView!.frame = bannerFrame
+//        view.addSubview(bannerView!)
+//        view.layoutSubviews()
 
-//        if let _ = view.window
-//        {
-//            if isViewLoaded()
-//            {
-//                bannerView!.frame = bannerFrame
-//                view.addSubview(bannerView!)
-//                view.layoutSubviews()
-//            }
-//        }
+        if let _ = view.window
+        {
+            if isViewLoaded()
+            {
+                bannerView!.frame = bannerFrame
+                view.addSubview(bannerView!)
+                view.layoutSubviews()
+            }
+        }
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
