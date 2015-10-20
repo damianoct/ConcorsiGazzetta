@@ -7,7 +7,8 @@
         <!--Concorsi-->
         <scene sceneID="lPS-aW-xr0">
             <objects>
-                <splitViewController id="r0N-IP-pa8" sceneMemberID="viewController">
+                <splitViewController id="r0N-IP-pa8" customClass="DDSSplitViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Concorsi" image="Megafono_Empty" selectedImage="Megafono_Fill" id="16j-zz-x7O"/>
                     <connections>
                         <segue destination="5OK-j2-VO3" kind="relationship" relationship="detailViewController" id="ocS-ui-LwH"/>
@@ -34,8 +35,8 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
                         <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
+                        <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NP-Xb-H3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -63,6 +64,7 @@
                             </label>
                         </subviews>
                         <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="PjN-YW-bk9"/>
                     <connections>
@@ -402,10 +404,41 @@
             </objects>
             <point key="canvasLocation" x="2316" y="-865.5"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="iY2-YO-gdh">
+            <objects>
+                <tableViewController storyboardIdentifier="resultsTBC" id="DRn-5p-ecp" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KtH-8N-nOb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nif-Ty-Riu">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nif-Ty-Riu" id="iHb-Lw-92m">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DRn-5p-ecp" id="5yZ-E4-DCB"/>
+                            <outlet property="delegate" destination="DRn-5p-ecp" id="k3b-a9-h1a"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHD-fJ-6JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3117" y="-865"/>
+        </scene>
         <!--Search Result TableView-->
         <scene sceneID="GmG-bQ-hUa">
             <objects>
-                <tableViewController storyboardIdentifier="searchResultTableView" title="Search Result TableView" automaticallyAdjustsScrollViewInsets="NO" id="vUQ-2l-WJA" customClass="DDSSearchTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchResultTableView" title="Search Result TableView" id="vUQ-2l-WJA" customClass="DDSSearchTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="hCZ-TI-jHj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,7 +461,7 @@
                             <outlet property="delegate" destination="vUQ-2l-WJA" id="EfT-qO-4wE"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Q5m-pg-cjI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcw-He-MTR" userLabel="First Responder" sceneMemberID="firstResponder"/>

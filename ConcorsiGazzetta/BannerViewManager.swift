@@ -41,7 +41,6 @@ class BannerViewManager: NSObject, ADBannerViewDelegate
     
     func bannerViewDidLoadAd(banner: ADBannerView!)
     {
-        print("\n\t Banner DidLoadAd")
         for controller in bannerViewControllers
         {
             (controller as! BannerViewController).updateLayout()
@@ -50,7 +49,6 @@ class BannerViewManager: NSObject, ADBannerViewDelegate
     
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!)
     {
-        print("\n\t Banner DidFailToReceiveAdWithError\n\t\tError: \(error)")
         for controller in bannerViewControllers
         {
             (controller as! BannerViewController).updateLayout()

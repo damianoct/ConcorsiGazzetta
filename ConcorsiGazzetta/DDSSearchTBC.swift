@@ -40,7 +40,7 @@ class DDSSearchTBC: UITableViewController
         }
     }
     
-    private var filterGazzettaString: String? = nil
+    var filterGazzettaString: String? = nil
         {
         didSet
         {
@@ -68,7 +68,6 @@ class DDSSearchTBC: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         setBackgroundTransparentWithImage()
         tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCell")
         

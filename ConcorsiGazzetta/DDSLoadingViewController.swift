@@ -18,8 +18,8 @@ class DDSLoadingViewController: UIViewController
     {
         super.viewDidLoad()
         
-        circularActivityIndicator.startAnimating()
-        animateAppLogo()
+        //circularActivityIndicator.startAnimating()
+        //animateAppLogo()
         DDSGazzettaStore.sharedInstance.setLoaderDelegate(viewController: self)
         
     }
@@ -34,15 +34,15 @@ class DDSLoadingViewController: UIViewController
     private func animateAppLogo() -> ()
     {
         let expandTransform:CGAffineTransform = CGAffineTransformMakeScale(1.15, 1.15)
-        let images = [UIImage(named: "Cravatta"),UIImage(named: "CravattaBeige"),UIImage(named: "CravattaRossa")]
+        //let images = [UIImage(named: "Cravatta"),UIImage(named: "CravattaBeige"),UIImage(named: "CravattaRossa")]
 
         UIView.transitionWithView(appLogo, duration:0.1,
                                     options: UIViewAnimationOptions.TransitionCrossDissolve,
                                     animations:
                                     {
-                                        var index = Int(images.indexOf({ $0 == self.appLogo.image})!.value)
-                                        self.appLogo.image = images[++index % 3]
-                                        self.appLogo.transform = expandTransform
+                                        //var index = Int(images.indexOf({ $0 == self.appLogo.image})!.value)
+                                        //self.appLogo.image = images[++index % 3]
+                                        //self.appLogo.transform = expandTransform
                                     },
                                     completion:
                                     {

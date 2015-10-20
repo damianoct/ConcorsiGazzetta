@@ -19,7 +19,9 @@ enum AlertAction: String
 class DDSGazzetteTBC: UITableViewController
 {
     var fetchResultController : NSFetchedResultsController?
-
+    var searchController : UISearchController!
+    var searchResultController : DDSSearchTBC!
+    
     override func viewDidLoad() -> ()
     {
         super.viewDidLoad()
@@ -32,7 +34,6 @@ class DDSGazzetteTBC: UITableViewController
         tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCellWithExpiring", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCellWithExpiring")
         
         fetchResultController = loadFetchedResultsController()
-
     }
 
     func appSettingsDidChange(notification: NSNotification) -> ()
@@ -217,6 +218,7 @@ class DDSGazzetteTBC: UITableViewController
         
         let searchController = UISearchController(searchResultsController: searchResultController)
         
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = searchResultController
         searchController.searchBar.barTintColor = UIColor(red: 48.0/255.0, green: 137.0/255.0, blue: 189.0/255.0, alpha: 1)
         searchController.searchBar.tintColor = UIColor(red: 24.0/255.0, green: 63.0/255.0, blue: 85.0/255.0, alpha: 1)
@@ -224,4 +226,23 @@ class DDSGazzetteTBC: UITableViewController
         presentViewController(searchController, animated: true, completion: nil )
     }
     
+}
+
+extension DDSGazzetteTBC : UISearchBarDelegate
+{
+    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    {
+        print("tapped")
+    }
+}
+
+extension DDSGazzetteTBC: UISearchResultsUpdating
+{
+    func updateSearchResultsForSearchController(searchController: UISearchController)
+    {
+        guard searchController.active else { return } //vedere meglio GUARD
+        
+        print(searchController.searchBar.text)
+        searchResultController.filterGazzettaString = searchController.searchBar.text
+    }
 }
