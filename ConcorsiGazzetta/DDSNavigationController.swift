@@ -15,6 +15,7 @@ class DDSNavigationController: UINavigationController, UINavigationControllerDel
     {
         super.viewDidLoad()
         self.delegate = self
+
     }
 
     override func didReceiveMemoryWarning()

@@ -114,7 +114,7 @@
         <!--Detail Navigation Controller-->
         <scene sceneID="JbT-P3-2Ad">
             <objects>
-                <navigationController storyboardIdentifier="detailNavController" title="Detail Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="5OK-j2-VO3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="detailNavController" title="Detail Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="5OK-j2-VO3" customClass="DDSDetailNavigationViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MPE-Cz-vkb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

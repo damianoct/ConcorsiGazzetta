@@ -18,6 +18,7 @@ class DDSDetailNavigationViewController: UINavigationController
         
         navigationBar.barTintColor = backgroundColor
         navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.leftBarButtonItem = self.splitViewController!.displayModeButtonItem()
         
         // Do any additional setup after loading the view.
     }
