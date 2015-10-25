@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0f4-Ib-3zv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0f4-Ib-3zv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Concorsi-->
@@ -35,8 +36,8 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
                         <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
+                        <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NP-Xb-H3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -114,7 +115,7 @@
         <!--Detail Navigation Controller-->
         <scene sceneID="JbT-P3-2Ad">
             <objects>
-                <navigationController storyboardIdentifier="detailNavController" title="Detail Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="5OK-j2-VO3" customClass="DDSDetailNavigationViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="detailNavController" title="Detail Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="5OK-j2-VO3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MPE-Cz-vkb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -161,7 +162,7 @@
         <!--Impostazioni TableView-->
         <scene sceneID="cmh-yY-Bpn">
             <objects>
-                <tableViewController title="Impostazioni TableView" id="Jen-fT-8XB" customClass="DDSSettingsTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="settingsTBC" title="Impostazioni TableView" id="Jen-fT-8XB" customClass="DDSSettingsTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="5Rd-4O-g8U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,12 +193,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=compact-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    </variation>
-                                                    <variation key="heightClass=compact-widthClass=regular">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    </variation>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="Glasses" id="asC-7r-icy">
                                                     <rect key="frame" x="15" y="1" width="40" height="40"/>
@@ -214,12 +209,37 @@
                                             </segue>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bPj-aL-0y5" imageView="Kw7-De-k3L" style="IBUITableViewCellStyleDefault" id="yf0-BD-Gyz">
+                                        <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yf0-BD-Gyz" id="Db4-Sq-yqe">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Mostra concorsi in scadenza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bPj-aL-0y5">
+                                                    <rect key="frame" x="70" y="0.0" width="495" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Clock_Settings" id="Kw7-De-k3L">
+                                                    <rect key="frame" x="15" y="1" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Connessione" id="GEJ-cx-pq0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="cdz-Yu-3ah" detailTextLabel="Vgc-vp-DUs" imageView="qXe-g8-E5o" style="IBUITableViewCellStyleValue1" id="raZ-jm-w9V">
-                                        <rect key="frame" x="0.0" y="189" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="233" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="raZ-jm-w9V" id="0St-sd-aIL">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -253,10 +273,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="15X-lQ-1I9">
+                            <tableViewSection id="15X-lQ-1I9" userLabel="Azzerra">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Kpt-i1-qat" style="IBUITableViewCellStyleDefault" id="hAt-Nz-6A1">
-                                        <rect key="frame" x="0.0" y="269" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="313" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hAt-Nz-6A1" id="KCf-Y0-MWq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -461,7 +481,6 @@
                             <outlet property="delegate" destination="vUQ-2l-WJA" id="EfT-qO-4wE"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Q5m-pg-cjI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcw-He-MTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -518,18 +537,26 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="n2N-3y-nJQ">
+                    <navigationItem key="navigationItem" title="Gazzette" id="n2N-3y-nJQ">
+                        <barButtonItem key="backBarButtonItem" title="Gazzette" id="PbX-Zh-yJD"/>
                         <barButtonItem key="leftBarButtonItem" image="Order_ToolBar_Item" id="4bl-JV-ZuI">
                             <connections>
                                 <action selector="orderButtonPressed:" destination="gLz-v4-zHU" id="kVq-5R-L4R"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="cmY-jH-owI">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="gLz-v4-zHU" id="Rw2-aq-YlG"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="cmY-jH-owI">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="gLz-v4-zHU" id="Rw2-aq-YlG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Settings_ToolBar_Item" id="yiP-Qd-Bmj">
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="gLz-v4-zHU" id="txg-bV-kvI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="5OK-j2-VO3" kind="showDetail" identifier="segueDetail" id="LXg-zG-Waq"/>
@@ -578,14 +605,16 @@
     </scenes>
     <resources>
         <image name="Antenna" width="40" height="40"/>
+        <image name="Clock_Settings" width="40" height="40"/>
         <image name="Glasses" width="40" height="40"/>
         <image name="Megafono_Empty" width="25" height="25"/>
         <image name="Megafono_Fill" width="25" height="25"/>
-        <image name="Order_ToolBar_Item" width="22" height="12"/>
+        <image name="Order_ToolBar_Item" width="25" height="14"/>
         <image name="Settings_Empty" width="25" height="25"/>
         <image name="Settings_Full" width="25" height="25"/>
+        <image name="Settings_ToolBar_Item" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ocS-ui-LwH"/>
+        <segue reference="LXg-zG-Waq"/>
     </inferredMetricsTieBreakers>
 </document>

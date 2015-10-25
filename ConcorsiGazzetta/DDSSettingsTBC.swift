@@ -98,12 +98,26 @@ class DDSSettingsTBC: UITableViewController
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
         cell.backgroundColor = UIColor.clearColor()
         
+        // numero gazzette
         if(indexPath.section == 0 && indexPath.row == 0)
         {
             cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
             cell.detailTextLabel?.text = String(DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number) + " gazzette"
         }
         
+        // mostra in scadenza
+        if(indexPath.section == 0 && indexPath.row == 1)
+        {
+            let switcher = UISwitch()
+            
+            switcher.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
+            switcher.on = DDSSettingsWorker.sharedInstance.showDeadlineContests()
+            cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
+            cell.imageView!.tintColor = UIColor.grayColor()
+            cell.accessoryView = switcher
+        }
+        
+        // utilizzo dati
         else if(indexPath.section == 1 && indexPath.row == 0)
         {
             cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
@@ -118,4 +132,12 @@ class DDSSettingsTBC: UITableViewController
                 
         return cell
     }
+    
+    //MARK: UISwitch Changed
+    
+    func switchChanged(sender: UISwitch)
+    {
+        DDSSettingsWorker.sharedInstance.setShowDeadlineContests(sender.on)
+    }
+    
 }

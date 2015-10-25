@@ -99,10 +99,9 @@ class DDSGazzetteTBC: UITableViewController
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        
         if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
         {
-            if Int(gazzetta.numberOfExpiringContests) > 0
+            if Int(gazzetta.numberOfExpiringContests) > 0 && DDSSettingsWorker.sharedInstance.showDeadlineContests()
             {
                 return tableView.dequeueReusableCellWithIdentifier("gazzettaCellWithExpiring")!
             }
@@ -117,7 +116,6 @@ class DDSGazzetteTBC: UITableViewController
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
-        
         if let cell = cell as? DDSGazzettaCustomCellWithExpiring
         {
             if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
@@ -194,7 +192,7 @@ class DDSGazzetteTBC: UITableViewController
         
         alertSheetController.addAction(UIAlertAction(title: AlertAction.OrderByDateOfPublication.rawValue, style: .Default, handler: orderFunction))
         
-        alertSheetController.addAction(UIAlertAction(title: "Annulla", style: .Cancel, handler: nil))
+        alertSheetController.addAction(UIAlertAction(title: "Annulla", style: .Destructive, handler: nil))
         
         alertSheetController.modalPresentationStyle = .Popover
         
@@ -224,8 +222,18 @@ class DDSGazzetteTBC: UITableViewController
         searchController.searchBar.tintColor = UIColor(red: 24.0/255.0, green: 63.0/255.0, blue: 85.0/255.0, alpha: 1)
         
         presentViewController(searchController, animated: true, completion: nil )
+        
     }
     
+    //MARK: IBAction Search
+
+    @IBAction func settingsButtonPressed(sender: UIBarButtonItem)
+    {
+        let settingsTBC = storyboard!.instantiateViewControllerWithIdentifier("settingsTBC") as! DDSSettingsTBC
+        
+        self.navigationController!.pushViewController(settingsTBC, animated: true)
+        
+    }
 }
 
 extension DDSGazzetteTBC : UISearchBarDelegate
@@ -241,8 +249,6 @@ extension DDSGazzetteTBC: UISearchResultsUpdating
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
         guard searchController.active else { return } //vedere meglio GUARD
-        
-        print(searchController.searchBar.text)
         searchResultController.filterGazzettaString = searchController.searchBar.text
     }
 }

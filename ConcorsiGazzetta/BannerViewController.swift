@@ -42,7 +42,7 @@ class BannerViewController: UIViewController, ADBannerViewDelegate
             
         else
         {
-            bannerFrame.origin.y = contentFrame.size.height
+            bannerFrame.origin.y = 2 * contentFrame.size.height
         }
         
         self.contentController!.view.frame = contentFrame
