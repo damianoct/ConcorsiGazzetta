@@ -113,8 +113,8 @@ class DDSSettingsTBC: UITableViewController
             switcher.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
             switcher.on = DDSSettingsWorker.sharedInstance.showDeadlineContests()
             cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
-            cell.imageView!.tintColor = UIColor.grayColor()
             cell.accessoryView = switcher
+            cell.selectionStyle = .None
         }
         
         // utilizzo dati

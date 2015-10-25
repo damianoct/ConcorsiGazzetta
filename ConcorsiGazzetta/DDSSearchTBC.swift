@@ -14,6 +14,7 @@ private struct Gazzetta
     var numberOfPublication: String
     var dateOfPublication: String
     var numberOfContests: String
+    var numberOfExpiringContests: String
     
     var month : String
     var day : String
@@ -24,6 +25,7 @@ private struct Gazzetta
         self.numberOfPublication = String(g.numberOfPublication)
         self.dateOfPublication = NSDateFormatter.getStringFromDateFormatter().stringFromDate(g.dateOfPublication)
         self.numberOfContests = String(g.contests.count)
+        self.numberOfExpiringContests = String(g.numberOfExpiringContests)
         let dateArray = dateOfPublication.characters.split {$0 == " "}.map(String.init)
         day = dateArray[0]; month = dateArray[1]; year = dateArray[2]
     }
@@ -70,6 +72,7 @@ class DDSSearchTBC: UITableViewController
         super.viewDidLoad()
         setBackgroundTransparentWithImage()
         tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCell")
+        tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCellWithExpiring", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCellWithExpiring")
         
         if let fetchedGazzette = loadFetchedGazzette()
         {
@@ -145,16 +148,32 @@ class DDSSearchTBC: UITableViewController
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("gazzettaCell") as? DDSGazzettaCustomCell
+        if Int(visibleResults[indexPath.row].numberOfExpiringContests) > 0 && DDSSettingsWorker.sharedInstance.showDeadlineContests()
         {
-            cell.numberOfPublication.text = "Edizione n. " + visibleResults[indexPath.row].numberOfPublication
-            cell.numberOfContests.text = visibleResults[indexPath.row].numberOfContests
-            cell.dateOfPublication.text = visibleResults[indexPath.row].dateOfPublication
-            return cell
+            return tableView.dequeueReusableCellWithIdentifier("gazzettaCellWithExpiring")!
         }
         else
         {
-           return DDSGazzettaCustomCell()
+            return tableView.dequeueReusableCellWithIdentifier("gazzettaCell")!
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if let cell = cell as? DDSGazzettaCustomCellWithExpiring
+        {
+
+            cell.dateOfPublication.text = visibleResults[indexPath.row].dateOfPublication
+            cell.numberOfPublication.text = "Edizione n. " + visibleResults[indexPath.row].numberOfPublication
+            cell.numberOfContests.text = visibleResults[indexPath.row].numberOfContests
+            cell.numberOfExpiringContests.text = visibleResults[indexPath.row].numberOfExpiringContests
+            
+        }
+        else if let cell = cell as? DDSGazzettaCustomCell
+        {
+            cell.dateOfPublication.text = visibleResults[indexPath.row].dateOfPublication
+            cell.numberOfPublication.text = "Edizione n. " + visibleResults[indexPath.row].numberOfPublication
+            cell.numberOfContests.text = visibleResults[indexPath.row].numberOfContests
         }
     }
 }
