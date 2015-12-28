@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DDSSplitViewController: UISplitViewController {
+class DDSSplitViewController: UISplitViewController
+{
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.preferredDisplayMode = .AllVisible
+		self.setNeedsStatusBarAppearanceUpdate()
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +24,13 @@ class DDSSplitViewController: UISplitViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+	// MARK: Status Bar Light
+	
+	override func preferredStatusBarStyle() -> UIStatusBarStyle
+	{
+		return .LightContent
+	}
+	
     /*
     // MARK: - Navigation
 

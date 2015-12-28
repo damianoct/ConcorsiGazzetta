@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gazzettaCellWithExpiring" id="ewx-Xa-CN2" customClass="DDSGazzettaCustomCellWithExpiring" customModule="ConcorsiGazzetta" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DDSGazzettaCustomCellWithExpiring" id="ewx-Xa-CN2" customClass="DDSGazzettaCustomCellWithExpiring" customModule="ConcorsiGazzetta" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ewx-Xa-CN2" id="HKi-av-fb3">
@@ -16,25 +16,21 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calendar" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-hM-nX1">
                         <rect key="frame" x="22" y="45" width="15" height="15"/>
-                        <animations/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-iy-0tw">
                         <rect key="frame" x="22" y="13" width="182" height="21"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <color key="textColor" red="0.094117647060000004" green="0.2470588235" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09 ottobre 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqH-AZ-aC2">
                         <rect key="frame" x="42" y="42" width="100" height="21"/>
-                        <animations/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                         <color key="textColor" red="0.18431372939999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Megafono_Cell" translatesAutoresizingMaskIntoConstraints="NO" id="OwD-q1-Td5">
                         <rect key="frame" x="235" y="15" width="18" height="18"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="FB6-Mo-xea"/>
                             <constraint firstAttribute="width" constant="18" id="hT7-rU-Ns6"/>
@@ -42,7 +38,6 @@
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock_Expire" translatesAutoresizingMaskIntoConstraints="NO" id="NLb-pr-DBl">
                         <rect key="frame" x="237" y="45" width="18" height="18"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="zLn-g7-xNE"/>
                             <constraint firstAttribute="width" constant="18" id="zMY-hV-S6W"/>
@@ -50,7 +45,6 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seG-QH-qQo">
                         <rect key="frame" x="260" y="41" width="27" height="23"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="9mb-mo-oYd"/>
                             <constraint firstAttribute="width" constant="27" id="ChP-sh-qe4"/>
@@ -61,7 +55,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wn6-TZ-orD">
                         <rect key="frame" x="260" y="13" width="27" height="22"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="Yuv-KK-shs"/>
                             <constraint firstAttribute="width" constant="27" id="hnB-q3-bV1"/>
@@ -71,7 +64,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="NLb-pr-DBl" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="37" id="5zW-H8-f2B"/>
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="leading" secondItem="OwD-q1-Td5" secondAttribute="trailing" constant="7" id="6we-XZ-DmZ"/>
@@ -82,7 +74,6 @@
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="centerY" secondItem="HKi-av-fb3" secondAttribute="centerY" constant="-12.5" id="q1w-CB-C1t"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="wn6-TZ-orD" secondAttribute="trailing" constant="33" id="kmh-7S-NMn"/>
             </constraints>

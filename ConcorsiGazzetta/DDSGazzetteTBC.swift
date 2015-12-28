@@ -18,6 +18,11 @@ enum AlertAction: String
 
 class DDSGazzetteTBC: UITableViewController
 {
+    
+    static let classicTableCell = "DDSGazzettaCustomCell"
+    static let contextExpiringTableCell = "DDSGazzettaCustomCellWithExpiring"
+	let tableViewBgImage = "newspaper_background_ingiallito.jpg"
+    
     var fetchResultController : NSFetchedResultsController?
     var searchController : UISearchController!
     var searchResultController : DDSSearchTBC!
@@ -26,47 +31,65 @@ class DDSGazzetteTBC: UITableViewController
     {
         super.viewDidLoad()
         
-        setBackgroundTransparentWithImage()
+        //setTransparentBackgroundFromImage(named: tableViewBgImage)
+		
+		self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appSettingsDidChange:", name: NSUserDefaultsDidChangeNotification, object: nil)
-        
-        tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCell")
-        tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCellWithExpiring", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCellWithExpiring")
+        NSNotificationCenter.defaultCenter().addObserver(
+														 self,
+														 selector: "appSettingsDidChange:",
+														 name: NSUserDefaultsDidChangeNotification,
+														 object: nil)
+        tableView.registerNib(UINib(
+									nibName: DDSGazzetteTBC.classicTableCell,
+									bundle: NSBundle.mainBundle()),
+									forCellReuseIdentifier: DDSGazzetteTBC.classicTableCell)
+        tableView.registerNib(UINib(
+									nibName: DDSGazzetteTBC.contextExpiringTableCell,
+									bundle: NSBundle.mainBundle()),
+									forCellReuseIdentifier: DDSGazzetteTBC.contextExpiringTableCell)
         
         fetchResultController = loadFetchedResultsController()
     }
 
+    override func didReceiveMemoryWarning() -> ()
+    {
+        super.didReceiveMemoryWarning()
+    }
+    
     func appSettingsDidChange(notification: NSNotification) -> ()
     {
         tableView.reloadData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	
+	func handleRefresh(refreshControl: UIRefreshControl)
+	{
+		print("Refreshing table...");
+		refreshControl.endRefreshing()
+	}
     
     //MARK: Design UI Functions
     
-    private func setBlurEffect()
+    private func setBlurEffect() -> UIView
     {
-        let image = UIImage(named: "newspaper_background_ingiallito.jpg")
+        let image = UIImage(named: tableViewBgImage)
         tableView.backgroundColor = UIColor(patternImage: image!)
         
         let blur = UIBlurEffect(style: .ExtraLight)
         let blurView = UIVisualEffectView(effect: blur)
         
-        tableView.backgroundView = blurView
+        return blurView
     }
     
-    private func setBackgroundTransparentWithImage()
+	private func setTransparentBackgroundFromImage(named name: String) -> ()
     {
-        let image = UIImage(named: "newspaper_background_ingiallito.jpg")
+        let image = UIImage(named: name)
         tableView.backgroundColor = UIColor(patternImage: image!)
         
         let viewWithAlpha = UIView(frame: self.view.bounds)
         viewWithAlpha.backgroundColor = UIColor(white: 0.96, alpha: 0.965)
         
-        tableView.backgroundView = viewWithAlpha
+        self.tableView.backgroundView = viewWithAlpha
     }
     
     private func loadFetchedResultsController() -> NSFetchedResultsController?
@@ -103,15 +126,11 @@ class DDSGazzetteTBC: UITableViewController
         {
             if Int(gazzetta.numberOfExpiringContests) > 0 && DDSSettingsWorker.sharedInstance.showDeadlineContests()
             {
-                return tableView.dequeueReusableCellWithIdentifier("gazzettaCellWithExpiring")!
-            }
-            else
-            {
-                return tableView.dequeueReusableCellWithIdentifier("gazzettaCell")!
+                return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.contextExpiringTableCell)!
             }
         }
         
-        return tableView.dequeueReusableCellWithIdentifier("gazzettaCell") as! DDSGazzettaCustomCellWithExpiring
+        return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.classicTableCell)!
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
@@ -228,7 +247,7 @@ class DDSGazzetteTBC: UITableViewController
         
     }
     
-    //MARK: IBAction Search
+    //MARK: IBAction Settings
 
     @IBAction func settingsButtonPressed(sender: UIBarButtonItem)
     {
@@ -251,7 +270,7 @@ extension DDSGazzetteTBC: UISearchResultsUpdating
 {
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
-        guard searchController.active else { return } //vedere meglio GUARD
+        guard searchController.active else { return }
         searchResultController.filterGazzettaString = searchController.searchBar.text
     }
 }

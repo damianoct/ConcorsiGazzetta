@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SaE-jh-29m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SaE-jh-29m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Loading View Controller-->
@@ -18,7 +18,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyO-an-5Ei" customClass="MRActivityIndicatorView">
                                 <rect key="frame" x="275" y="275" width="40" height="40"/>
-                                <animations/>
                                 <color key="backgroundColor" red="0.14509804546833038" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -28,14 +27,12 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cravatta" translatesAutoresizingMaskIntoConstraints="NO" id="YHu-hY-Zzw">
                                 <rect key="frame" x="245" y="133" width="100" height="100"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="d6q-ia-1N7"/>
                                     <constraint firstAttribute="height" constant="100" id="deR-Hd-amo"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.14509804549999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gyO-an-5Ei" firstAttribute="top" secondItem="YHu-hY-Zzw" secondAttribute="bottom" constant="42" id="7Eh-0J-dLr"/>
@@ -64,6 +61,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Cravatta" width="150" height="150"/>
+        <image name="Cravatta" width="154" height="154"/>
     </resources>
 </document>

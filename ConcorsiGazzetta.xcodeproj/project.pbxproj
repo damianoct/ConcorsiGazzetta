@@ -8,28 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		38E7D1B67BCAA979081C3EAD /* Pods_ConcorsiGazzetta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6619572EDD99D8559167B4F3 /* Pods_ConcorsiGazzetta.framework */; };
-		D109BD271BCA91CC009FC24A /* DDSContestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD211BCA91CC009FC24A /* DDSContestItem.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD281BCA91CC009FC24A /* DDSGazzettaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD221BCA91CC009FC24A /* DDSGazzettaItem.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD291BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD231BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD2A1BCA91CC009FC24A /* DDSGazzettaWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD241BCA91CC009FC24A /* DDSGazzettaWorker.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD2B1BCA91CC009FC24A /* DDSGazzetteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD251BCA91CC009FC24A /* DDSGazzetteStore.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD2D1BCA91DE009FC24A /* DDSSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */; settings = {ASSET_TAGS = (); }; };
-		D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507A41BCAC4950019635D /* newspaper_background_ingiallito.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D15507A31BCAC4950019635D /* newspaper_background_ingiallito.jpg */; settings = {ASSET_TAGS = (); }; };
-		D15507A61BCAC4A70019635D /* DDSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A51BCAC4A70019635D /* DDSNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507A81BCADB170019635D /* DDSNavigationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A71BCADB170019635D /* DDSNavigationAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507AB1BCB039C0019635D /* DDSGazzettaCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507AA1BCB039C0019635D /* DDSGazzettaCustomCell.swift */; settings = {ASSET_TAGS = (); }; };
-		D15507AD1BCB03A50019635D /* DDSGazzettaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15507AC1BCB03A50019635D /* DDSGazzettaCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
-		D1643BD31BCA9E84007591BE /* DDSDetailNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD21BCA9E84007591BE /* DDSDetailNavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D1643BD51BCA9E8B007591BE /* DDSDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD41BCA9E8B007591BE /* DDSDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D169F5961BD4120A00AEECDD /* BannerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F5951BD4120A00AEECDD /* BannerViewManager.swift */; settings = {ASSET_TAGS = (); }; };
-		D18F91F91BCABF870000EDF9 /* LoadingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18F91F81BCABF870000EDF9 /* LoadingStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
-		D19E16FF1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E16FD1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift */; settings = {ASSET_TAGS = (); }; };
-		D19E17001BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E16FE1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib */; settings = {ASSET_TAGS = (); }; };
-		D1BC500F1BD6E32800B2B9D6 /* DDSSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC500E1BD6E32800B2B9D6 /* DDSSplitViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D109BD271BCA91CC009FC24A /* DDSContestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD211BCA91CC009FC24A /* DDSContestItem.swift */; };
+		D109BD281BCA91CC009FC24A /* DDSGazzettaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD221BCA91CC009FC24A /* DDSGazzettaItem.swift */; };
+		D109BD291BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD231BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift */; };
+		D109BD2A1BCA91CC009FC24A /* DDSGazzettaWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD241BCA91CC009FC24A /* DDSGazzettaWorker.swift */; };
+		D109BD2B1BCA91CC009FC24A /* DDSGazzetteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD251BCA91CC009FC24A /* DDSGazzetteStore.swift */; };
+		D109BD2D1BCA91DE009FC24A /* DDSSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */; };
+		D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */; };
+		D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */; };
+		D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */; };
+		D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */; };
+		D15507A41BCAC4950019635D /* newspaper_background_ingiallito.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D15507A31BCAC4950019635D /* newspaper_background_ingiallito.jpg */; };
+		D15507A61BCAC4A70019635D /* DDSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A51BCAC4A70019635D /* DDSNavigationController.swift */; };
+		D15507A81BCADB170019635D /* DDSNavigationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A71BCADB170019635D /* DDSNavigationAnimator.swift */; };
+		D15507AB1BCB039C0019635D /* DDSGazzettaCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507AA1BCB039C0019635D /* DDSGazzettaCustomCell.swift */; };
+		D15507AD1BCB03A50019635D /* DDSGazzettaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15507AC1BCB03A50019635D /* DDSGazzettaCustomCell.xib */; };
+		D1643BD31BCA9E84007591BE /* DDSDetailNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD21BCA9E84007591BE /* DDSDetailNavigationViewController.swift */; };
+		D1643BD51BCA9E8B007591BE /* DDSDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1643BD41BCA9E8B007591BE /* DDSDetailViewController.swift */; };
+		D169F5961BD4120A00AEECDD /* BannerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D169F5951BD4120A00AEECDD /* BannerViewManager.swift */; };
+		D18F91F91BCABF870000EDF9 /* LoadingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D18F91F81BCABF870000EDF9 /* LoadingStoryboard.storyboard */; };
+		D19E16FF1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19E16FD1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift */; };
+		D19E17001BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19E16FE1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.xib */; };
+		D1BC500F1BD6E32800B2B9D6 /* DDSSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC500E1BD6E32800B2B9D6 /* DDSSplitViewController.swift */; };
 		D1DB1E5E1BCA8E4B0076F48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB1E5D1BCA8E4B0076F48C /* AppDelegate.swift */; };
 		D1DB1E601BCA8E4B0076F48C /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB1E5F1BCA8E4B0076F48C /* BannerViewController.swift */; };
 		D1DB1E631BCA8E4B0076F48C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1DB1E611BCA8E4B0076F48C /* Main.storyboard */; };
@@ -37,10 +37,10 @@
 		D1DB1E681BCA8E4B0076F48C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1DB1E671BCA8E4B0076F48C /* Assets.xcassets */; };
 		D1DB1E761BCA8E4B0076F48C /* ConcorsiGazzettaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB1E751BCA8E4B0076F48C /* ConcorsiGazzettaTests.swift */; };
 		D1DB1E811BCA8E4B0076F48C /* ConcorsiGazzettaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB1E801BCA8E4B0076F48C /* ConcorsiGazzettaUITests.swift */; };
-		D1EA9AFF1BCC094400487174 /* DDSGazzetteTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9AFE1BCC094400487174 /* DDSGazzetteTBC.swift */; settings = {ASSET_TAGS = (); }; };
-		D1EA9B041BCC1AB900487174 /* DDSCravattaNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9B021BCC1AB900487174 /* DDSCravattaNavBarViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D1EA9B051BCC1AB900487174 /* DDSCravattaNavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA9B031BCC1AB900487174 /* DDSCravattaNavBarViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		D1F47D671BCC5443005CF5B5 /* DDSSearchTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */; settings = {ASSET_TAGS = (); }; };
+		D1EA9AFF1BCC094400487174 /* DDSGazzetteTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9AFE1BCC094400487174 /* DDSGazzetteTBC.swift */; };
+		D1EA9B041BCC1AB900487174 /* DDSCravattaNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9B021BCC1AB900487174 /* DDSCravattaNavBarViewController.swift */; };
+		D1EA9B051BCC1AB900487174 /* DDSCravattaNavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA9B031BCC1AB900487174 /* DDSCravattaNavBarViewController.xib */; };
+		D1F47D671BCC5443005CF5B5 /* DDSSearchTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

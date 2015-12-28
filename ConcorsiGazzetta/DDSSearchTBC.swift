@@ -58,9 +58,10 @@ class DDSSearchTBC: UITableViewController
                 visibleResults = fullGazzette.filter
                 {
                         filterPredicateBegins.evaluateWithObject($0.day) ||
-                            filterPredicateBegins.evaluateWithObject($0.month) ||
-                                filterPredicateBegins.evaluateWithObject($0.year) ||
-                                    filterPredicateContains.evaluateWithObject($0.numberOfPublication) || filterPredicateContains.evaluateWithObject($0.numberOfContests)
+						filterPredicateBegins.evaluateWithObject($0.month) ||
+						filterPredicateBegins.evaluateWithObject($0.year) ||
+						filterPredicateContains.evaluateWithObject($0.numberOfPublication) ||
+						filterPredicateContains.evaluateWithObject($0.numberOfContests)
                 }
             }
             tableView.reloadData()
