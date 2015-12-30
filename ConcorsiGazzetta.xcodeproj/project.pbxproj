@@ -16,6 +16,7 @@
 		D109BD2D1BCA91DE009FC24A /* DDSSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */; };
 		D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */; };
 		D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */; };
+		D13EE2821C329D860048331C /* DDSStoreDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13EE2811C329D860048331C /* DDSStoreDelegate.swift */; };
 		D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */; };
 		D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */; };
 		D15507A41BCAC4950019635D /* newspaper_background_ingiallito.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D15507A31BCAC4950019635D /* newspaper_background_ingiallito.jpg */; };
@@ -72,6 +73,7 @@
 		D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsWorker.swift; sourceTree = "<group>"; };
 		D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSUtils.swift; sourceTree = "<group>"; };
 		D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSLoadingViewController.swift; sourceTree = "<group>"; };
+		D13EE2811C329D860048331C /* DDSStoreDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSStoreDelegate.swift; sourceTree = "<group>"; };
 		D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsTBC.swift; sourceTree = "<group>"; };
 		D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsGazzetteNumberTBC.swift; sourceTree = "<group>"; };
 		D15507A31BCAC4950019635D /* newspaper_background_ingiallito.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = newspaper_background_ingiallito.jpg; path = ../../iOSConcorsiGazzetta/iOSConcorsiGazzetta/newspaper_background_ingiallito.jpg; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				D109BD231BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift */,
 				D109BD241BCA91CC009FC24A /* DDSGazzettaWorker.swift */,
 				D109BD251BCA91CC009FC24A /* DDSGazzetteStore.swift */,
+				D13EE2811C329D860048331C /* DDSStoreDelegate.swift */,
 			);
 			name = Model;
 			path = ../../iOSConcorsiGazzetta/iOSConcorsiGazzetta;
@@ -459,6 +462,7 @@
 				D109BD291BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift in Sources */,
 				D1F47D671BCC5443005CF5B5 /* DDSSearchTBC.swift in Sources */,
 				D109BD2B1BCA91CC009FC24A /* DDSGazzetteStore.swift in Sources */,
+				D13EE2821C329D860048331C /* DDSStoreDelegate.swift in Sources */,
 				D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */,
 				D19E16FF1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift in Sources */,
 				D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */,

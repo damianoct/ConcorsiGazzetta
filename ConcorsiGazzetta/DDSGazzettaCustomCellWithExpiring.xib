@@ -15,17 +15,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calendar" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-hM-nX1">
-                        <rect key="frame" x="22" y="45" width="15" height="15"/>
+                        <rect key="frame" x="24" y="45" width="15" height="15"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-iy-0tw">
-                        <rect key="frame" x="22" y="13" width="182" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-iy-0tw">
+                        <rect key="frame" x="24" y="13" width="182" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <color key="textColor" red="0.094117647060000004" green="0.2470588235" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09 ottobre 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqH-AZ-aC2">
-                        <rect key="frame" x="42" y="42" width="100" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
+                        <rect key="frame" x="44" y="42" width="131" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                         <color key="textColor" red="0.18431372939999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -63,22 +63,40 @@
                         <color key="textColor" red="0.18431372939999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfz-gW-MCm">
+                        <rect key="frame" x="-89" y="82" width="18" height="19"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euZ-li-gpZ" customClass="CircleView" customModule="ConcorsiGazzetta" customModuleProvider="target">
+                        <rect key="frame" x="6" y="18" width="10" height="10"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.53725490200000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Ksq-zW-a3l"/>
+                            <constraint firstAttribute="width" constant="10" id="vfd-Uh-dEV"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="NLb-pr-DBl" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="37" id="5zW-H8-f2B"/>
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="leading" secondItem="OwD-q1-Td5" secondAttribute="trailing" constant="7" id="6we-XZ-DmZ"/>
+                    <constraint firstItem="euZ-li-gpZ" firstAttribute="leading" secondItem="HKi-av-fb3" secondAttribute="leadingMargin" constant="-2" id="8ct-5X-Gqe"/>
                     <constraint firstItem="seG-QH-qQo" firstAttribute="leading" secondItem="NLb-pr-DBl" secondAttribute="trailing" constant="5" id="ALP-Ql-jAW"/>
+                    <constraint firstItem="euZ-li-gpZ" firstAttribute="centerY" secondItem="OwD-q1-Td5" secondAttribute="centerY" constant="-1" id="KXW-WJ-smj"/>
                     <constraint firstItem="OwD-q1-Td5" firstAttribute="centerY" secondItem="HKi-av-fb3" secondAttribute="centerY" constant="-12.5" id="Loy-b3-MfN"/>
+                    <constraint firstItem="Hvn-iy-0tw" firstAttribute="leading" secondItem="euZ-li-gpZ" secondAttribute="trailing" constant="8" id="NPf-Z8-5Fa"/>
                     <constraint firstItem="OwD-q1-Td5" firstAttribute="leading" secondItem="seG-QH-qQo" secondAttribute="trailing" constant="-52" id="bCU-Af-4e4"/>
                     <constraint firstItem="seG-QH-qQo" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="33" id="fuD-QG-Lqw"/>
+                    <constraint firstItem="euZ-li-gpZ" firstAttribute="centerY" secondItem="Hvn-iy-0tw" secondAttribute="centerY" id="hB3-u0-ilf"/>
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="centerY" secondItem="HKi-av-fb3" secondAttribute="centerY" constant="-12.5" id="q1w-CB-C1t"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="wn6-TZ-orD" secondAttribute="trailing" constant="33" id="kmh-7S-NMn"/>
             </constraints>
+            <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateOfPublication" destination="uqH-AZ-aC2" id="VB0-K2-UTP"/>
+                <outlet property="indicator" destination="euZ-li-gpZ" id="UUX-rl-Iho"/>
                 <outlet property="numberOfContests" destination="wn6-TZ-orD" id="eyq-Kl-YQ5"/>
                 <outlet property="numberOfExpiringContests" destination="seG-QH-qQo" id="SA5-Rm-JcB"/>
                 <outlet property="numberOfPublication" destination="Hvn-iy-0tw" id="xdq-T3-AnW"/>

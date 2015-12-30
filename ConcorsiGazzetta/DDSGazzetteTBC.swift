@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MGSwipeTableCell
 
 enum AlertAction: String
 {
@@ -33,6 +34,13 @@ class DDSGazzetteTBC: UITableViewController
         
         //setTransparentBackgroundFromImage(named: tableViewBgImage)
 		
+		/**
+			Refresh Control
+		**/	
+		self.refreshControl?.tintColor = UIColor.bluGazzettaColor()
+		let attrs = [NSForegroundColorAttributeName: UIColor.bluTextColor()]
+		let refreshControlText = NSAttributedString(string: "Aggiorno Gazzette...", attributes: attrs)
+		self.refreshControl?.attributedTitle = refreshControlText
 		self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         NSNotificationCenter.defaultCenter().addObserver(
@@ -56,16 +64,44 @@ class DDSGazzetteTBC: UITableViewController
     {
         super.didReceiveMemoryWarning()
     }
-    
+	
+	/**
+		Left buttons for cell 
+	**/
+	
+	func leftButtons() -> [AnyObject]
+	{
+		let bts = NSMutableArray()
+		
+		return bts as [AnyObject]
+	}
+	
+	func rightButtons() -> [AnyObject]
+	{
+		let bts = NSMutableArray()
+		
+		return bts as [AnyObject]
+	}
+	
     func appSettingsDidChange(notification: NSNotification) -> ()
     {
         tableView.reloadData()
     }
 	
-	func handleRefresh(refreshControl: UIRefreshControl)
+	private func setGazzettaAsRead(atIndexPath index: NSIndexPath) -> ()
 	{
-		print("Refreshing table...");
-		refreshControl.endRefreshing()
+		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
+		{
+			gazzetta.read = true
+			do
+			{
+				try DDSGazzettaStore.sharedInstance.getManagedObjectContext().save()
+			}
+			catch
+			{
+				print(error)
+			}
+		}
 	}
     
     //MARK: Design UI Functions
@@ -143,6 +179,14 @@ class DDSGazzetteTBC: UITableViewController
                 cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
                 cell.numberOfContests.text = String(gazzetta.contests.count)
                 cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
+				cell.delegate = self
+				
+				if gazzetta.read
+				{
+					cell.indicator.hidden = true
+				}
+				//cell.indicator.backgroundColor = UIColor.bluGazzettaColor()
+				//cell.indicator.layer.cornerRadius = 4.9
             }
         }
         else if let cell = cell as? DDSGazzettaCustomCell
@@ -158,6 +202,7 @@ class DDSGazzetteTBC: UITableViewController
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+		setGazzettaAsRead(atIndexPath: indexPath)
         performSegueWithIdentifier("segueDetail", sender: self)
     }
     
@@ -165,9 +210,39 @@ class DDSGazzetteTBC: UITableViewController
     {
         
     }
-    
+
+	
+	/*override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
+	{
+		let more = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "")
+		{ action, index in
+			print("more button tapped")
+		}
+		more.backgroundColor = UIColor(patternImage: UIImage(named: "Glasses")!)
+		
+		let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+			print("favorite button tapped")
+		}
+		favorite.backgroundColor = UIColor.orangeColor()
+		
+		let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
+			print("share button tapped")
+		}
+		share.backgroundColor = UIColor.blueColor()
+		
+		return [share, favorite, more]
+	}
+	
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+	{
+		// the cells you would like the actions to appear needs to be editable
+		return true
+	}*/
+	
+	
+	
     //MARK: Ordering Function
-    
+	
     private func orderFunction(alertAction: UIAlertAction) -> ()
     {
         var keySort : String
@@ -240,7 +315,7 @@ class DDSGazzetteTBC: UITableViewController
         
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = searchResultController
-        searchController.searchBar.barTintColor = UIColor(red: 48.0/255.0, green: 137.0/255.0, blue: 189.0/255.0, alpha: 1)
+        //searchController.searchBar.barTintColor = UIColor(red: 48.0/255.0, green: 137.0/255.0, blue: 189.0/255.0, alpha: 1)
         searchController.searchBar.tintColor = UIColor(red: 24.0/255.0, green: 63.0/255.0, blue: 85.0/255.0, alpha: 1)
         
         presentViewController(searchController, animated: true, completion: nil )
@@ -256,6 +331,55 @@ class DDSGazzetteTBC: UITableViewController
         self.navigationController!.pushViewController(settingsTBC, animated: true)
         
     }
+	
+	//MARK: Refresh Control
+	
+	func handleRefresh(refreshControl: UIRefreshControl)
+	{
+		if(Reachability.isConnectedToNetwork())
+		{
+			print("Refreshing table...");
+			DDSGazzettaStore.sharedInstance.setLoaderDelegate(self)
+			DDSGazzettaStore.sharedInstance.downloadGazzette()
+		}
+		else
+		{
+			self.presentViewController(AlertHandler.alertForConnectionFailed(), animated: true)
+				{
+					refreshControl.endRefreshing()
+			}
+		}
+		
+	}
+}
+
+extension DDSGazzetteTBC : MGSwipeTableCellDelegate
+{
+	func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]!
+	{
+		print("swipeTableCell swipeButtonsForDirection")
+		
+		expansionSettings.buttonIndex = 0
+		expansionSettings.fillOnTrigger = false
+		expansionSettings.threshold = 1.5
+		return [
+				MGSwipeButton(title: "Segna come letta", backgroundColor: UIColor.blueColor())
+				]
+	}
+}
+
+extension DDSGazzetteTBC : DDSStoreDelegate
+{
+	func onLoadingComplete()
+	{
+		print("On Loading Complete -> Aggiorno il fetch controller")
+		fetchResultController = loadFetchedResultsController()
+		
+		if ((self.refreshControl?.refreshing) != nil)
+		{
+			self.refreshControl?.endRefreshing()
+		}
+	}
 }
 
 extension DDSGazzetteTBC : UISearchBarDelegate

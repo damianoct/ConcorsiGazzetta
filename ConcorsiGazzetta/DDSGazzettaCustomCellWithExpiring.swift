@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
-class DDSGazzettaCustomCellWithExpiring: UITableViewCell {
-
-    
+class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
+{
+	@IBOutlet weak var indicator: UIView!
     @IBOutlet weak var numberOfExpiringContests: UILabel!
     @IBOutlet weak var numberOfPublication: UILabel!    
     @IBOutlet weak var numberOfContests: UILabel!
@@ -19,7 +20,9 @@ class DDSGazzettaCustomCellWithExpiring: UITableViewCell {
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        backgroundColor = UIColor.clearColor()
+        //backgroundColor = UIColor.clearColor()
+		//indicator.backgroundColor = UIColor.bluGazzettaColor()
+		//indicator.layer.cornerRadius = 4.9
 
     }
 

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
-class DDSGazzettaCustomCell: UITableViewCell
+class DDSGazzettaCustomCell: MGSwipeTableCell
 {
     
     @IBOutlet weak var dateOfPublication: UILabel!
@@ -18,7 +19,7 @@ class DDSGazzettaCustomCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        backgroundColor = UIColor.clearColor()
+        //backgroundColor = UIColor.clearColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool)

@@ -23,7 +23,7 @@ class DDSLoadingViewController: UIViewController
 		{
 			circularActivityIndicator.startAnimating()
 			animateAppLogo()
-			DDSGazzettaStore.sharedInstance.setLoaderDelegate(viewController: self)
+			DDSGazzettaStore.sharedInstance.setLoaderDelegate(self)
 		}
 		else
 		{
@@ -73,31 +73,6 @@ class DDSLoadingViewController: UIViewController
         }
     }
     
-    
-    //MARK: Gazzette Loader Delegate
-	
-    func onLoadingComplete()
-    {
-        self.circularActivityIndicator.stopAnimating()
-		
-        dispatch_async(dispatch_get_main_queue(),
-            {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initial = storyboard.instantiateInitialViewController()
-                initial!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                self.presentViewController(initial!, animated: true)
-				{
-					if !Reachability.isConnectedToNetwork()
-					{
-						initial!.presentViewController(AlertHandler.alertForConnectionFailed(), animated: true, completion: nil)
-					}
-				}
-            })
-        
- 
-        
-    }
-    
     // MARK: Status Bar Light
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle
@@ -105,4 +80,28 @@ class DDSLoadingViewController: UIViewController
         return .LightContent
     }
     
+}
+
+extension DDSLoadingViewController : DDSStoreDelegate
+{
+	//MARK: Gazzette Store Delegate
+	
+	func onLoadingComplete()
+	{
+		self.circularActivityIndicator.stopAnimating()
+		
+		dispatch_async(dispatch_get_main_queue(),
+			{
+				let storyboard = UIStoryboard(name: "Main", bundle: nil)
+				let initial = storyboard.instantiateInitialViewController()
+				initial!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+				self.presentViewController(initial!, animated: true)
+					{
+						if !Reachability.isConnectedToNetwork()
+						{
+							initial!.presentViewController(AlertHandler.alertForConnectionFailed(), animated: true, completion: nil)
+						}
+				}
+		})
+	}
 }

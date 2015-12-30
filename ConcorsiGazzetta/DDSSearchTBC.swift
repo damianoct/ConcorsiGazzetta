@@ -72,8 +72,8 @@ class DDSSearchTBC: UITableViewController
     {
         super.viewDidLoad()
         setBackgroundTransparentWithImage()
-        tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCell")
-        tableView.registerNib(UINib(nibName: "DDSGazzettaCustomCellWithExpiring", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "gazzettaCellWithExpiring")
+        tableView.registerNib(UINib(nibName: DDSGazzetteTBC.classicTableCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: DDSGazzetteTBC.classicTableCell)
+        tableView.registerNib(UINib(nibName: DDSGazzetteTBC.contextExpiringTableCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: DDSGazzetteTBC.contextExpiringTableCell)
         
         if let fetchedGazzette = loadFetchedGazzette()
         {
@@ -151,11 +151,11 @@ class DDSSearchTBC: UITableViewController
     {
         if Int(visibleResults[indexPath.row].numberOfExpiringContests) > 0 && DDSSettingsWorker.sharedInstance.showDeadlineContests()
         {
-            return tableView.dequeueReusableCellWithIdentifier("gazzettaCellWithExpiring")!
+            return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.contextExpiringTableCell)!
         }
         else
         {
-            return tableView.dequeueReusableCellWithIdentifier("gazzettaCell")!
+            return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.classicTableCell)!
         }
     }
     
