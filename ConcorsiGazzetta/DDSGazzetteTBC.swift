@@ -36,7 +36,8 @@ class DDSGazzetteTBC: UITableViewController
 		
 		/**
 			Refresh Control
-		**/	
+		**/
+		
 		self.refreshControl?.tintColor = UIColor.bluGazzettaColor()
 		let attrs = [NSForegroundColorAttributeName: UIColor.bluTextColor()]
 		let refreshControlText = NSAttributedString(string: "Aggiorno Gazzette...", attributes: attrs)
@@ -48,12 +49,16 @@ class DDSGazzetteTBC: UITableViewController
 														 selector: "appSettingsDidChange:",
 														 name: NSUserDefaultsDidChangeNotification,
 														 object: nil)
-        tableView.registerNib(UINib(
-									nibName: DDSGazzetteTBC.classicTableCell,
+		
+		/**
+			Register Nibs for cell reusing
+		**/
+		
+        tableView.registerNib(UINib(nibName: DDSGazzetteTBC.classicTableCell,
 									bundle: NSBundle.mainBundle()),
 									forCellReuseIdentifier: DDSGazzetteTBC.classicTableCell)
-        tableView.registerNib(UINib(
-									nibName: DDSGazzetteTBC.contextExpiringTableCell,
+		
+        tableView.registerNib(UINib(nibName: DDSGazzetteTBC.contextExpiringTableCell,
 									bundle: NSBundle.mainBundle()),
 									forCellReuseIdentifier: DDSGazzetteTBC.contextExpiringTableCell)
         
@@ -69,18 +74,32 @@ class DDSGazzetteTBC: UITableViewController
 		Left buttons for cell 
 	**/
 	
-	func leftButtons() -> [AnyObject]
+	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
 	{
-		let bts = NSMutableArray()
+		let specs = readButtonForGazzetta(atIndexPath: indexOfCell)
 		
-		return bts as [AnyObject]
+		let toggleReadButton = MGSwipeButton(title: specs.buttonTitle,
+											 icon: specs.buttonImage,
+											 backgroundColor: specs.buttonColor)
+		
+		let favouriteButton = MGSwipeButton(title: "",
+											icon: UIImage(named: "favouriteGazzettaCell"),
+											backgroundColor: UIColor(red: 69.0/255.0, green: 154.0/255.0, blue: 204.0/255.0, alpha: 1.0))
+		
+		return [toggleReadButton, favouriteButton] as [AnyObject]
 	}
+	
+	/**
+		Right buttons for cell
+	**/
 	
 	func rightButtons() -> [AnyObject]
 	{
-		let bts = NSMutableArray()
+		let deleteButton = MGSwipeButton(title: "Elimina",
+										 icon: UIImage(named: "RubbishGazzettaCell"),
+										 backgroundColor: UIColor.redReadColor())
 		
-		return bts as [AnyObject]
+		return [deleteButton] as [AnyObject]
 	}
 	
     func appSettingsDidChange(notification: NSNotification) -> ()
@@ -92,10 +111,31 @@ class DDSGazzetteTBC: UITableViewController
 	{
 		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
 		{
-			gazzetta.read = true
+			if !gazzetta.read
+			{
+				gazzetta.read = true
+				do
+				{
+					try DDSGazzettaStore.sharedInstance.getManagedObjectContext().save()
+					print("setGazzettaAsRead")
+				}
+				catch
+				{
+					print(error)
+				}
+			}
+		}
+	}
+	
+	private func toggleGazzettaReadState(atIndexPath index: NSIndexPath) -> ()
+	{
+		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
+		{
+			gazzetta.read = !gazzetta.read
 			do
 			{
 				try DDSGazzettaStore.sharedInstance.getManagedObjectContext().save()
+				self.tableView.reloadData()
 			}
 			catch
 			{
@@ -103,6 +143,22 @@ class DDSGazzetteTBC: UITableViewController
 			}
 		}
 	}
+	
+	private func readButtonForGazzetta(atIndexPath index: NSIndexPath) -> (buttonTitle: String, buttonImage: UIImage, buttonColor: UIColor)
+	{
+		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
+		{
+			return !gazzetta.read ? ("",
+									 UIImage(named: "CheckMarkGazzetta")!,
+									 UIColor.greenReadColor()) :
+									("",
+								     UIImage(named: "UncheckMarkGazzetta")!,
+									 UIColor.redReadColor())
+		}
+		
+		return ("", UIImage(named: "CheckMarkGazzetta")!, UIColor.greenReadColor())
+	}
+	
     
     //MARK: Design UI Functions
     
@@ -143,12 +199,11 @@ class DDSGazzetteTBC: UITableViewController
         catch
         {
             print("\(error)")
-            return nil
         }
         
         return fetchController
     }
-    
+	
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -185,8 +240,10 @@ class DDSGazzetteTBC: UITableViewController
 				{
 					cell.indicator.hidden = true
 				}
-				//cell.indicator.backgroundColor = UIColor.bluGazzettaColor()
-				//cell.indicator.layer.cornerRadius = 4.9
+				else
+				{
+					cell.indicator.hidden = false
+				}
             }
         }
         else if let cell = cell as? DDSGazzettaCustomCell
@@ -196,21 +253,42 @@ class DDSGazzetteTBC: UITableViewController
                 cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
                 cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
                 cell.numberOfContests.text = String(gazzetta.contests.count)
+				cell.delegate = self
+				if gazzetta.read
+				{
+					cell.indicator.hidden = true
+				}
+				else
+				{
+					cell.indicator.hidden = false
+				}
             }
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-		setGazzettaAsRead(atIndexPath: indexPath)
-        performSegueWithIdentifier("segueDetail", sender: self)
+        performSegueWithIdentifier("segueDetail", sender: indexPath)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        
+        if segue.identifier == "segueDetail"
+		{
+			if let index = sender as? NSIndexPath
+			{
+				if let segueNavController = segue.destinationViewController as? UINavigationController
+				{
+					if let segueController = segueNavController.topViewController as? DDSDetailViewController
+					{
+						print(segueController)
+						setGazzettaAsRead(atIndexPath: index)
+						segueController.senderController = self
+					}
+				}
+			}
+		}
     }
-
 	
 	/*override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
 	{
@@ -338,7 +416,6 @@ class DDSGazzetteTBC: UITableViewController
 	{
 		if(Reachability.isConnectedToNetwork())
 		{
-			print("Refreshing table...");
 			DDSGazzettaStore.sharedInstance.setLoaderDelegate(self)
 			DDSGazzettaStore.sharedInstance.downloadGazzette()
 		}
@@ -349,22 +426,45 @@ class DDSGazzetteTBC: UITableViewController
 					refreshControl.endRefreshing()
 			}
 		}
-		
 	}
 }
 
 extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 {
+	func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool
+	{
+		if (index == 0)
+		{
+			self.toggleGazzettaReadState(atIndexPath: self.tableView.indexPathForCell(cell)!)
+			cell.refreshContentView()
+		}
+		else
+		{
+			print("Second Button Tapped!")
+			return false
+		}
+		return true
+	}
+	
 	func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]!
 	{
-		print("swipeTableCell swipeButtonsForDirection")
+		swipeSettings.transition = MGSwipeTransition.Static
 		
-		expansionSettings.buttonIndex = 0
-		expansionSettings.fillOnTrigger = false
-		expansionSettings.threshold = 1.5
-		return [
-				MGSwipeButton(title: "Segna come letta", backgroundColor: UIColor.blueColor())
-				]
+		let indexOfCell = self.tableView.indexPathForCell(cell)!
+		
+		if direction == MGSwipeDirection.LeftToRight
+		{
+			expansionSettings.buttonIndex = 0
+			expansionSettings.fillOnTrigger = true
+			expansionSettings.threshold = 2.1
+			
+			return leftButtons(forCellAtIndexPath: indexOfCell)
+		}
+		
+		else
+		{
+			return rightButtons()
+		}
 	}
 }
 

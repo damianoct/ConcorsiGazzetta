@@ -15,6 +15,7 @@ class DDSGazzettaCustomCell: MGSwipeTableCell
     @IBOutlet weak var dateOfPublication: UILabel!
     @IBOutlet weak var numberOfPublication: UILabel!
     @IBOutlet weak var numberOfContests: UILabel!
+	@IBOutlet weak var indicator: CircleView!
     
     override func awakeFromNib()
     {
@@ -22,11 +23,24 @@ class DDSGazzettaCustomCell: MGSwipeTableCell
         //backgroundColor = UIColor.clearColor()
     }
 
-    override func setSelected(selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+	override func setHighlighted(highlighted: Bool, animated: Bool)
+	{
+		super.setHighlighted(highlighted, animated: animated)
+		if highlighted
+		{
+			self.indicator.backgroundColor = UIColor.clearColor()
+		}
+	}
+	
+	override func setSelected(selected: Bool, animated: Bool)
+	{
+		super.setSelected(selected, animated: animated)
+		//self.contentView.addSubview(indicator)
+		if selected
+		{
+			self.indicator.backgroundColor = UIColor.clearColor()
+		}
+		// Configure the view for the selected state
+	}
+	
 }

@@ -17,8 +17,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calendar" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-hM-nX1">
                         <rect key="frame" x="24" y="45" width="15" height="15"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-iy-0tw">
-                        <rect key="frame" x="24" y="13" width="182" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvn-iy-0tw">
+                        <rect key="frame" x="24" y="13" width="106" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <color key="textColor" red="0.094117647060000004" green="0.2470588235" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -63,13 +63,9 @@
                         <color key="textColor" red="0.18431372939999999" green="0.53725492949999998" blue="0.74117648599999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfz-gW-MCm">
-                        <rect key="frame" x="-89" y="82" width="18" height="19"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euZ-li-gpZ" customClass="CircleView" customModule="ConcorsiGazzetta" customModuleProvider="target">
                         <rect key="frame" x="6" y="18" width="10" height="10"/>
-                        <color key="backgroundColor" red="0.1450980392" green="0.53725490200000003" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="Ksq-zW-a3l"/>
                             <constraint firstAttribute="width" constant="10" id="vfd-Uh-dEV"/>

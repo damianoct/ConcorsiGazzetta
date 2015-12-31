@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,16 +15,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Calendar" translatesAutoresizingMaskIntoConstraints="NO" id="epU-Wd-u4l">
-                        <rect key="frame" x="22" y="45" width="15" height="15"/>
+                        <rect key="frame" x="24" y="45" width="15" height="15"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-oC-0MB">
-                        <rect key="frame" x="22" y="13" width="182" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edizione n. 52" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ne5-oC-0MB">
+                        <rect key="frame" x="24" y="13" width="106" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                         <color key="textColor" red="0.094117647058823528" green="0.24705882352941178" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09 ottobre 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eif-Gc-5MX">
-                        <rect key="frame" x="42" y="42" width="124" height="21"/>
+                        <rect key="frame" x="44" y="42" width="124" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                         <color key="textColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,8 +46,20 @@
                         <color key="textColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwy-cP-XqL" customClass="CircleView" customModule="ConcorsiGazzetta" customModuleProvider="target">
+                        <rect key="frame" x="6" y="18" width="10" height="10"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="iuH-WQ-aXP"/>
+                            <constraint firstAttribute="width" constant="10" id="vvD-0f-wWI"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ne5-oC-0MB" firstAttribute="leading" secondItem="gwy-cP-XqL" secondAttribute="trailing" constant="8" id="5vq-Ie-ABt"/>
+                    <constraint firstItem="gwy-cP-XqL" firstAttribute="top" secondItem="A5p-3T-Dcv" secondAttribute="topMargin" constant="10" id="JQB-ej-K9t"/>
+                    <constraint firstItem="gwy-cP-XqL" firstAttribute="leading" secondItem="A5p-3T-Dcv" secondAttribute="leadingMargin" constant="-2" id="ROt-Jg-Yyt"/>
+                    <constraint firstItem="gwy-cP-XqL" firstAttribute="centerY" secondItem="ne5-oC-0MB" secondAttribute="centerY" id="WjZ-Zb-ga1"/>
                     <constraint firstItem="yqj-97-mml" firstAttribute="centerY" secondItem="A5p-3T-Dcv" secondAttribute="centerY" constant="0.5" id="cFb-xU-mTQ"/>
                     <constraint firstItem="yqj-97-mml" firstAttribute="leading" secondItem="9Vx-WU-oH4" secondAttribute="trailing" constant="8" id="fY0-9m-7ey"/>
                     <constraint firstItem="9Vx-WU-oH4" firstAttribute="centerY" secondItem="A5p-3T-Dcv" secondAttribute="centerY" constant="0.5" id="qc2-MY-lSu"/>
@@ -55,8 +68,10 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yqj-97-mml" secondAttribute="trailing" constant="28" id="nlp-Kj-WrV"/>
             </constraints>
+            <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateOfPublication" destination="eif-Gc-5MX" id="MkK-Zg-FVl"/>
+                <outlet property="indicator" destination="gwy-cP-XqL" id="hMT-hL-6K5"/>
                 <outlet property="numberOfContests" destination="yqj-97-mml" id="vql-fe-G92"/>
                 <outlet property="numberOfPublication" destination="ne5-oC-0MB" id="wPF-CT-EUb"/>
             </connections>

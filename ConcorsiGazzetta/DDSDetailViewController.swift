@@ -17,10 +17,17 @@ class DDSDetailViewController: UIViewController
     {
         didSet
         {
-            // Update the view.
             self.configureView()
         }
     }
+	
+	var senderController: UIViewController?
+	{
+		didSet
+		{
+			//self.configureView2()
+		}
+	}
     
     private func configureView() -> ()
     {
@@ -34,14 +41,27 @@ class DDSDetailViewController: UIViewController
         }
 
     }
+	
+	private func configureView2() -> ()
+	{
+		if let gazzetteController = senderController as? DDSGazzetteTBC
+		{
+			print("Reloading data..")
+			gazzetteController.tableView.reloadData()
+		}
+	}
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        configureView()
 
         // Do any additional setup after loading the view.
     }
+	
+	override func viewDidAppear(animated: Bool)
+	{
+		configureView2()
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
