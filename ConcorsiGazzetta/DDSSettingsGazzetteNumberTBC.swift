@@ -14,7 +14,7 @@ class DDSSettingsGazzetteNumberTBC: UITableViewController
     override func viewDidLoad() -> ()
     {
         super.viewDidLoad()
-        setBackgroundTransparentWithImage()
+        //setBackgroundTransparentWithImage()
     }
 
     override func didReceiveMemoryWarning() -> ()
@@ -68,9 +68,7 @@ class DDSSettingsGazzetteNumberTBC: UITableViewController
         //static tableview!
         
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        
-        cell.backgroundColor = UIColor.clearColor()
-        
+                
         if(indexPath == DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().index)
         {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark

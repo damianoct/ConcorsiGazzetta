@@ -17,7 +17,7 @@ class DDSSettingsTBC: UITableViewController
         //tableView.backgroundColor = UIColor.clearColor() // -> da usare se lo sfondo del NavController è fisso
         
         //setBlurEffect()
-        setBackgroundTransparentWithImage()
+        //setBackgroundTransparentWithImage()
     }
 
     override func didReceiveMemoryWarning() -> ()
@@ -96,7 +96,6 @@ class DDSSettingsTBC: UITableViewController
     {
         //static cell
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        cell.backgroundColor = UIColor.clearColor()
         
         // numero gazzette
         if(indexPath.section == 0 && indexPath.row == 0)

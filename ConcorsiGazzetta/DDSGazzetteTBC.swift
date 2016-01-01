@@ -17,6 +17,13 @@ enum AlertAction: String
     case OrderByDateOfPublication = "Data di pubblicazione"
 }
 
+enum CellButton: Int
+{
+	case ToggleRead = 0
+	case Favourite = 1
+	case Delete = 10
+}
+
 class DDSGazzetteTBC: UITableViewController
 {
     
@@ -114,15 +121,7 @@ class DDSGazzetteTBC: UITableViewController
 			if !gazzetta.read
 			{
 				gazzetta.read = true
-				do
-				{
-					try DDSGazzettaStore.sharedInstance.getManagedObjectContext().save()
-					print("setGazzettaAsRead")
-				}
-				catch
-				{
-					print(error)
-				}
+				DDSGazzettaStore.sharedInstance.saveDataObjects()
 			}
 		}
 	}
@@ -132,15 +131,8 @@ class DDSGazzetteTBC: UITableViewController
 		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
 		{
 			gazzetta.read = !gazzetta.read
-			do
-			{
-				try DDSGazzettaStore.sharedInstance.getManagedObjectContext().save()
-				self.tableView.reloadData()
-			}
-			catch
-			{
-				print(error)
-			}
+			DDSGazzettaStore.sharedInstance.saveDataObjects()
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -208,7 +200,10 @@ class DDSGazzetteTBC: UITableViewController
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number
+        //return DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number
+		let fetchRequest = NSFetchRequest(entityName: "Gazzetta")
+		print(DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil))
+		return DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -431,20 +426,40 @@ class DDSGazzetteTBC: UITableViewController
 
 extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 {
+	private func indexOfButton(forTappedIndex index: Int, andSwipeDirection direction: MGSwipeDirection) -> Int
+	{
+		return direction == .LeftToRight ? index : index + 10
+	}
+	
 	func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool
 	{
-		if (index == 0)
+		let buttonIndex = indexOfButton(forTappedIndex: index, andSwipeDirection: direction)
+		let indexOfCell = self.tableView.indexPathForCell(cell)!
+		
+		switch(CellButton(rawValue: buttonIndex)!)
 		{
-			self.toggleGazzettaReadState(atIndexPath: self.tableView.indexPathForCell(cell)!)
-			cell.refreshContentView()
+			case .ToggleRead:
+								self.toggleGazzettaReadState(atIndexPath: indexOfCell)
+								cell.refreshContentView()
+								return true
+			
+			case .Favourite:
+								print("Tapped Favourite")
+								return false
+			
+			case .Delete:
+								print("Tapped Delete")
+								if let gazzetta = fetchResultController?.objectAtIndexPath(indexOfCell) as? DDSGazzettaItem
+								{
+									DDSGazzettaStore.sharedInstance.managedObjectContext.deleteObject(gazzetta)
+									// non fare delete row qui, ma farlo con i metodi del delegato
+									// del fetch controller -> NSFetchedResultsControllerDelegate
+								}
+								return false
 		}
-		else
-		{
-			print("Second Button Tapped!")
-			return false
-		}
-		return true
+
 	}
+	
 	
 	func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]!
 	{
@@ -456,7 +471,7 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 		{
 			expansionSettings.buttonIndex = 0
 			expansionSettings.fillOnTrigger = true
-			expansionSettings.threshold = 2.1
+			expansionSettings.threshold = 1.8
 			
 			return leftButtons(forCellAtIndexPath: indexOfCell)
 		}

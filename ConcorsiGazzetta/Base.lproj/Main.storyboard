@@ -170,8 +170,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Numero Gazzette" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="h3O-6C-uOn">
-                                                    <rect key="frame" x="70" y="12" width="127" height="20"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Numero massimo Gazzette da visualizzare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="h3O-6C-uOn">
+                                                    <rect key="frame" x="70" y="12" width="307" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
@@ -229,7 +229,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Utilizzo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cdz-Yu-3ah">
-                                                    <rect key="frame" x="70" y="12" width="54" height="20"/>
+                                                    <rect key="frame" x="71" y="12" width="54" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,7 +243,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Antenna" id="qXe-g8-E5o">
-                                                    <rect key="frame" x="15" y="1" width="40" height="40"/>
+                                                    <rect key="frame" x="15" y="1" width="41" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -557,7 +557,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Antenna" width="40" height="40"/>
+        <image name="Antenna" width="41" height="40"/>
         <image name="Clock_Settings" width="40" height="40"/>
         <image name="Glasses" width="40" height="40"/>
         <image name="Megafono_Empty" width="25" height="25"/>
