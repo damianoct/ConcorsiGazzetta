@@ -27,7 +27,7 @@
 "Jen-fT-8XB.title" = "Impostazioni TableView";
 
 /* Class = "UITableViewController"; title = "Numero Gazzette"; ObjectID = "KQL-F3-BoQ"; */
-"KQL-F3-BoQ.title" = "Numero Gazzette";
+"KQL-F3-BoQ.title" = "Numero massimo di gazzette";
 
 /* Class = "UILabel"; text = "Azzera statistiche"; ObjectID = "Kpt-i1-qat"; */
 "Kpt-i1-qat.text" = "Azzera statistiche";

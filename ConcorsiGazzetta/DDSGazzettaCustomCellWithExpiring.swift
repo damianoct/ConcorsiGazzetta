@@ -20,12 +20,13 @@ class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        //backgroundColor = UIColor.clearColor()
-		//indicator.backgroundColor = UIColor.bluGazzettaColor()
-		//indicator.layer.cornerRadius = 4.9
-
     }
 
+	/**
+		Override delle funzioni setHighlighted e setSelected per non "spazzare via" 
+		UIView della cell quando quest'ultima è selezionata
+	**/
+	
 	override func setHighlighted(highlighted: Bool, animated: Bool)
 	{
 		super.setHighlighted(highlighted, animated: animated)

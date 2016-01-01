@@ -54,8 +54,9 @@ class DDSSettingsTBC: UITableViewController
     func refreshNumberOfGazzetteCell() -> ()
     {
         let cellIndex = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: cellIndex)
-        cell.detailTextLabel?.text = String(DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number) + " gazzette"
+        //let cell = super.tableView(tableView, cellForRowAtIndexPath: cellIndex)
+		let cell = self.tableView.cellForRowAtIndexPath(cellIndex)!
+        cell.detailTextLabel?.text = String(DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number)
     }
     
     private func setResetCell(cell: UITableViewCell) -> ()
@@ -96,12 +97,17 @@ class DDSSettingsTBC: UITableViewController
     {
         //static cell
         let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        
+		
+		if let _ = cell.imageView
+		{
+			cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
+		}
+		
         // numero gazzette
         if(indexPath.section == 0 && indexPath.row == 0)
         {
-            cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
-            cell.detailTextLabel?.text = String(DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number) + " gazzette"
+			cell.textLabel?.text = "Numero massimo di gazzette"
+            cell.detailTextLabel?.text = String(DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number)
         }
         
         // mostra in scadenza
@@ -111,7 +117,6 @@ class DDSSettingsTBC: UITableViewController
             
             switcher.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
             switcher.on = DDSSettingsWorker.sharedInstance.showDeadlineContests()
-            cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
             cell.accessoryView = switcher
             cell.selectionStyle = .None
         }
@@ -119,7 +124,6 @@ class DDSSettingsTBC: UITableViewController
         // utilizzo dati
         else if(indexPath.section == 1 && indexPath.row == 0)
         {
-            cell.imageView!.transform = CGAffineTransformMakeScale(0.7, 0.7)
             cell.detailTextLabel?.text = DDSSettingsWorker.sharedInstance.trafficSizeReadable()
             cell.selectionStyle = .None
         }

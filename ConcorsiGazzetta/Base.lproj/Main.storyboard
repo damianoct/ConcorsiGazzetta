@@ -170,8 +170,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Numero massimo Gazzette da visualizzare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="h3O-6C-uOn">
-                                                    <rect key="frame" x="70" y="12" width="307" height="20"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Numero massimo di gazzette" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="h3O-6C-uOn">
+                                                    <rect key="frame" x="70" y="12" width="211" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
@@ -184,7 +184,7 @@
                                                     <color key="textColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="Glasses" id="asC-7r-icy">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="SettingsIcon_Glasses" id="asC-7r-icy">
                                                     <rect key="frame" x="15" y="1" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -210,7 +210,7 @@
                                                     <color key="textColor" red="0.094117648899555206" green="0.24705882370471954" blue="0.3333333432674408" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Clock_Settings" id="Kw7-De-k3L">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="SettingsIcon_Clock" id="Kw7-De-k3L">
                                                     <rect key="frame" x="15" y="1" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -242,7 +242,7 @@
                                                     <color key="textColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Antenna" id="qXe-g8-E5o">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="SettingsIcon_Antenna" id="qXe-g8-E5o">
                                                     <rect key="frame" x="15" y="1" width="41" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -557,12 +557,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Antenna" width="41" height="40"/>
-        <image name="Clock_Settings" width="40" height="40"/>
-        <image name="Glasses" width="40" height="40"/>
         <image name="Megafono_Empty" width="25" height="25"/>
         <image name="Megafono_Fill" width="25" height="25"/>
         <image name="Order_ToolBar_Item" width="25" height="14"/>
+        <image name="SettingsIcon_Antenna" width="41" height="40"/>
+        <image name="SettingsIcon_Clock" width="40" height="40"/>
+        <image name="SettingsIcon_Glasses" width="40" height="40"/>
         <image name="Settings_Empty" width="25" height="25"/>
         <image name="Settings_Full" width="25" height="25"/>
         <image name="Settings_ToolBar_Item" width="22" height="22"/>

@@ -15,13 +15,18 @@ class DDSGazzettaCustomCell: MGSwipeTableCell
     @IBOutlet weak var dateOfPublication: UILabel!
     @IBOutlet weak var numberOfPublication: UILabel!
     @IBOutlet weak var numberOfContests: UILabel!
-	@IBOutlet weak var indicator: CircleView!
+	@IBOutlet weak var indicator: UIView!
     
     override func awakeFromNib()
     {
         super.awakeFromNib()
         //backgroundColor = UIColor.clearColor()
     }
+	
+	/**
+		Override delle funzioni setHighlighted e setSelected per non "spazzare via"
+		UIView della cell quando quest'ultima è selezionata
+	**/
 
 	override func setHighlighted(highlighted: Bool, animated: Bool)
 	{

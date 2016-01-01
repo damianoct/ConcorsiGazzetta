@@ -51,10 +51,10 @@ class DDSSettingsGazzetteNumberTBC: UITableViewController
         if(indexPath != DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().index)
         {
             refreshCheckmark(atNewIndex: indexPath)
-            
-            DDSSettingsWorker.sharedInstance.setNumberOfGazzetteToView(fromIndexPath: indexPath)
-            
-            (self.navigationController?.viewControllers[0] as? DDSSettingsTBC)?.refreshNumberOfGazzetteCell()
+			
+			DDSSettingsWorker.sharedInstance.setNumberOfGazzetteToView(fromIndexPath: indexPath)
+			
+            (self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] as? DDSSettingsTBC)?.refreshNumberOfGazzetteCell()
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

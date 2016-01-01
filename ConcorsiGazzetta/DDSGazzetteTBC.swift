@@ -90,7 +90,7 @@ class DDSGazzetteTBC: UITableViewController
 											 backgroundColor: specs.buttonColor)
 		
 		let favouriteButton = MGSwipeButton(title: "",
-											icon: UIImage(named: "favouriteGazzettaCell"),
+											icon: UIImage(named: "CellButton_G_Favourite"),
 											backgroundColor: UIColor(red: 69.0/255.0, green: 154.0/255.0, blue: 204.0/255.0, alpha: 1.0))
 		
 		return [toggleReadButton, favouriteButton] as [AnyObject]
@@ -102,11 +102,14 @@ class DDSGazzetteTBC: UITableViewController
 	
 	func rightButtons() -> [AnyObject]
 	{
+		let shareButton = MGSwipeButton(title: "",
+										icon: UIImage(named: "CellButton_G_Share"),
+										backgroundColor: UIColor.bluGazzettaColor())
 		let deleteButton = MGSwipeButton(title: "Elimina",
-										 icon: UIImage(named: "RubbishGazzettaCell"),
+										 icon: UIImage(named: "CellButton_G_Rubbish"),
 										 backgroundColor: UIColor.redReadColor())
 		
-		return [deleteButton] as [AnyObject]
+		return [deleteButton,shareButton] as [AnyObject]
 	}
 	
     func appSettingsDidChange(notification: NSNotification) -> ()
@@ -141,14 +144,14 @@ class DDSGazzetteTBC: UITableViewController
 		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
 		{
 			return !gazzetta.read ? ("",
-									 UIImage(named: "CheckMarkGazzetta")!,
+									 UIImage(named: "CellButton_G_CheckMark")!,
 									 UIColor.greenReadColor()) :
 									("",
-								     UIImage(named: "UncheckMarkGazzetta")!,
+								     UIImage(named: "CellButton_G_UncheckMark")!,
 									 UIColor.redReadColor())
 		}
 		
-		return ("", UIImage(named: "CheckMarkGazzetta")!, UIColor.greenReadColor())
+		return ("", UIImage(named: "CellButton_G_CheckMark")!, UIColor.greenReadColor())
 	}
 	
     
@@ -202,7 +205,7 @@ class DDSGazzetteTBC: UITableViewController
     {
         //return DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number
 		let fetchRequest = NSFetchRequest(entityName: "Gazzetta")
-		print(DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil))
+
 		return DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
     }
 
@@ -478,6 +481,7 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 		
 		else
 		{
+			cell.allowsButtonsWithDifferentWidth = true
 			return rightButtons()
 		}
 	}
