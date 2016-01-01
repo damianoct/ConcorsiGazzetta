@@ -22,6 +22,7 @@ enum CellButton: Int
 	case ToggleRead = 0
 	case Favourite = 1
 	case Delete = 10
+	case Share = 11
 }
 
 class DDSGazzetteTBC: UITableViewController
@@ -77,8 +78,29 @@ class DDSGazzetteTBC: UITableViewController
         super.didReceiveMemoryWarning()
     }
 	
+	private func loadFetchedResultsController() -> NSFetchedResultsController?
+	{
+		var fetchController : NSFetchedResultsController
+		let fetchRequest = NSFetchRequest(entityName: "Gazzetta")
+		
+		fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "dateOfPublication", ascending: false)]
+		
+		do
+		{
+			fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Gazzetta Cache")
+			fetchController.delegate = self
+			try fetchController.performFetch()
+		}
+		catch
+		{
+			print("\(error)")
+		}
+		
+		return fetchController
+	}
+	
 	/**
-		Left buttons for cell 
+		Left buttons for cell
 	**/
 	
 	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
@@ -178,26 +200,6 @@ class DDSGazzetteTBC: UITableViewController
         
         self.tableView.backgroundView = viewWithAlpha
     }
-    
-    private func loadFetchedResultsController() -> NSFetchedResultsController?
-    {
-        var fetchController : NSFetchedResultsController
-        let fetchRequest = NSFetchRequest(entityName: "Gazzetta")
-        
-        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "dateOfPublication", ascending: false)]
-        
-        do
-        {
-            fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Gazzetta Cache")
-            try fetchController.performFetch()
-        }
-        catch
-        {
-            print("\(error)")
-        }
-        
-        return fetchController
-    }
 	
     // MARK: - Table view data source
 
@@ -279,7 +281,6 @@ class DDSGazzetteTBC: UITableViewController
 				{
 					if let segueController = segueNavController.topViewController as? DDSDetailViewController
 					{
-						print(segueController)
 						setGazzettaAsRead(atIndexPath: index)
 						segueController.senderController = self
 					}
@@ -459,6 +460,9 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 									// del fetch controller -> NSFetchedResultsControllerDelegate
 								}
 								return false
+			case .Share:
+								print("Tapped Share")
+								return false
 		}
 
 	}
@@ -516,4 +520,19 @@ extension DDSGazzetteTBC: UISearchResultsUpdating
         guard searchController.active else { return }
         searchResultController.filterGazzettaString = searchController.searchBar.text
     }
+}
+
+extension DDSGazzetteTBC: NSFetchedResultsControllerDelegate
+{
+	func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) -> ()
+	{
+		switch(type)
+		{
+			case .Delete:
+							self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
+							DDSGazzettaStore.sharedInstance.saveDataObjects()
+							break;
+			default: break
+		}
+	}
 }

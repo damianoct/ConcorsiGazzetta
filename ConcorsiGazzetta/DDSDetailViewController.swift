@@ -46,7 +46,6 @@ class DDSDetailViewController: UIViewController
 	{
 		if let gazzetteController = senderController as? DDSGazzetteTBC
 		{
-			print("Reloading data..")
 			gazzetteController.tableView.reloadData()
 		}
 	}
