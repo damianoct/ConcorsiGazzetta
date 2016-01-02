@@ -421,7 +421,7 @@ class DDSGazzetteTBC: UITableViewController
 		else
 		{
 			self.presentViewController(AlertHandler.alertForConnectionFailed(), animated: true)
-				{
+			{
 					refreshControl.endRefreshing()
 			}
 		}
