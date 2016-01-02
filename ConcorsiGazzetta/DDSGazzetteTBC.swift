@@ -435,6 +435,19 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 		return direction == .LeftToRight ? index : index + 10
 	}
 	
+	private func addGazzettaToRubbish(gazzetta: DDSGazzettaItem)
+	{
+		//viewDidLoad of DDSRubbishGazzetteTBC isn't called until the view property of UIViewController subclass is accessed
+		_ = (self.tabBarController?.viewControllers![2] as! BannerViewController).view
+		
+		let deletedGazzetta = NSEntityDescription.insertNewObjectForEntityForName("RubbishGazzetta", inManagedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext) as! DDSRubbishGazzettaItem
+		
+		deletedGazzetta.numberOfContests = gazzetta.numberOfContests
+		deletedGazzetta.numberOfExpiringContests = gazzetta.numberOfExpiringContests
+		deletedGazzetta.numberOfPublication = gazzetta.numberOfPublication
+		deletedGazzetta.dateOfPublication = gazzetta.dateOfPublication
+	}
+	
 	func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool
 	{
 		let buttonIndex = indexOfButton(forTappedIndex: index, andSwipeDirection: direction)
@@ -455,7 +468,9 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 								print("Tapped Delete")
 								if let gazzetta = fetchResultController?.objectAtIndexPath(indexOfCell) as? DDSGazzettaItem
 								{
+									addGazzettaToRubbish(gazzetta)
 									DDSGazzettaStore.sharedInstance.managedObjectContext.deleteObject(gazzetta)
+									
 									// non fare delete row qui, ma farlo con i metodi del delegato
 									// del fetch controller -> NSFetchedResultsControllerDelegate
 								}
@@ -466,7 +481,6 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 		}
 
 	}
-	
 	
 	func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]!
 	{

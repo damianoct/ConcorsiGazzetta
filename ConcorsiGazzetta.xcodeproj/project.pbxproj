@@ -16,6 +16,8 @@
 		D109BD2D1BCA91DE009FC24A /* DDSSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */; };
 		D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */; };
 		D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */; };
+		D125147A1C380CA00045B5DC /* DDSRubbishGazzettaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12514791C380CA00045B5DC /* DDSRubbishGazzettaItem.swift */; };
+		D125147C1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */; };
 		D13EE2821C329D860048331C /* DDSStoreDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13EE2811C329D860048331C /* DDSStoreDelegate.swift */; };
 		D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */; };
 		D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */; };
@@ -73,6 +75,8 @@
 		D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsWorker.swift; sourceTree = "<group>"; };
 		D109BD2E1BCA91E8009FC24A /* DDSUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSUtils.swift; sourceTree = "<group>"; };
 		D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSLoadingViewController.swift; sourceTree = "<group>"; };
+		D12514791C380CA00045B5DC /* DDSRubbishGazzettaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSRubbishGazzettaItem.swift; sourceTree = "<group>"; };
+		D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSRubbishGazzetteTBC.swift; sourceTree = "<group>"; };
 		D13EE2811C329D860048331C /* DDSStoreDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSStoreDelegate.swift; sourceTree = "<group>"; };
 		D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsTBC.swift; sourceTree = "<group>"; };
 		D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsGazzetteNumberTBC.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				D109BD2C1BCA91DE009FC24A /* DDSSettingsWorker.swift */,
 				D109BD211BCA91CC009FC24A /* DDSContestItem.swift */,
 				D109BD221BCA91CC009FC24A /* DDSGazzettaItem.swift */,
+				D12514791C380CA00045B5DC /* DDSRubbishGazzettaItem.swift */,
 				D109BD231BCA91CC009FC24A /* DDSGazzettaJSONWorker.swift */,
 				D109BD241BCA91CC009FC24A /* DDSGazzettaWorker.swift */,
 				D109BD251BCA91CC009FC24A /* DDSGazzetteStore.swift */,
@@ -170,6 +175,7 @@
 				D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */,
 				D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */,
 				D1BC500E1BD6E32800B2B9D6 /* DDSSplitViewController.swift */,
+				D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1DB1E601BCA8E4B0076F48C /* BannerViewController.swift in Sources */,
+				D125147A1C380CA00045B5DC /* DDSRubbishGazzettaItem.swift in Sources */,
 				D1EA9B041BCC1AB900487174 /* DDSCravattaNavBarViewController.swift in Sources */,
 				D109BD2F1BCA91E8009FC24A /* DDSUtils.swift in Sources */,
 				D109BD271BCA91CC009FC24A /* DDSContestItem.swift in Sources */,
@@ -455,6 +462,7 @@
 				D1DB1E661BCA8E4B0076F48C /* ConcorsiGazzetta.xcdatamodeld in Sources */,
 				D109BD281BCA91CC009FC24A /* DDSGazzettaItem.swift in Sources */,
 				D15507AB1BCB039C0019635D /* DDSGazzettaCustomCell.swift in Sources */,
+				D125147C1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift in Sources */,
 				D1DB1E5E1BCA8E4B0076F48C /* AppDelegate.swift in Sources */,
 				D15507A81BCADB170019635D /* DDSNavigationAnimator.swift in Sources */,
 				D109BD2D1BCA91DE009FC24A /* DDSSettingsWorker.swift in Sources */,

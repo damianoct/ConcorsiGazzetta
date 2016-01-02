@@ -37,6 +37,7 @@
                     <connections>
                         <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
                         <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
+                        <segue destination="dAO-lv-lJ0" kind="relationship" relationship="viewControllers" id="aMh-or-X58"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NP-Xb-H3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,7 +442,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcw-He-MTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-227" y="-1801"/>
+            <point key="canvasLocation" x="3105" y="-1625"/>
         </scene>
         <!--iAd Gazzette Navigation-->
         <scene sceneID="2NH-la-Zz0">
@@ -555,6 +556,91 @@
             </objects>
             <point key="canvasLocation" x="-227" y="-865"/>
         </scene>
+        <!--Cestino-->
+        <scene sceneID="Dmv-EK-IeM">
+            <objects>
+                <viewController id="dAO-lv-lJ0" customClass="BannerViewController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pye-pZ-bag"/>
+                        <viewControllerLayoutGuide type="bottom" id="uuT-Sq-F28"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aaP-C8-yY8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-we-d4y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <connections>
+                                    <segue destination="jIR-Gu-NWq" kind="embed" id="jNd-YE-3yl"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qNj-we-d4y" firstAttribute="height" secondItem="aaP-C8-yY8" secondAttribute="height" id="LdA-5w-1GC"/>
+                            <constraint firstItem="qNj-we-d4y" firstAttribute="width" secondItem="aaP-C8-yY8" secondAttribute="width" id="SED-YL-k17"/>
+                            <constraint firstItem="qNj-we-d4y" firstAttribute="centerX" secondItem="aaP-C8-yY8" secondAttribute="centerX" id="YoN-uV-cNr"/>
+                            <constraint firstItem="qNj-we-d4y" firstAttribute="centerY" secondItem="aaP-C8-yY8" secondAttribute="centerY" id="bry-Bf-8wa"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <tabBarItem key="tabBarItem" title="Cestino" image="TabBarIcon_Rubbish" id="Gsd-kX-pSd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xR-ry-bK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-227" y="-1753"/>
+        </scene>
+        <!--Cestino-->
+        <scene sceneID="uvS-8M-WVg">
+            <objects>
+                <tableViewController storyboardIdentifier="Rubbish" id="Wuf-W0-ZZg" customClass="DDSRubbishGazzetteTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pbw-os-j6G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7e7-pm-P8I">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7e7-pm-P8I" id="S30-FQ-bKb">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wuf-W0-ZZg" id="I4o-7o-mO3"/>
+                            <outlet property="delegate" destination="Wuf-W0-ZZg" id="bk1-Gw-jVC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cestino" id="Ysp-o3-J4P"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eJ-wm-rZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1465" y="-1753.5"/>
+        </scene>
+        <!--Cestino Navigation-->
+        <scene sceneID="XRs-V6-ZYt">
+            <objects>
+                <navigationController title="Cestino Navigation" automaticallyAdjustsScrollViewInsets="NO" id="jIR-Gu-NWq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X8E-s4-u9r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wuf-W0-ZZg" kind="relationship" relationship="rootViewController" id="BXb-8P-nat"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3C-IH-iMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="-1753.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Megafono_Empty" width="25" height="25"/>
@@ -566,6 +652,7 @@
         <image name="Settings_Empty" width="25" height="25"/>
         <image name="Settings_Full" width="25" height="25"/>
         <image name="Settings_ToolBar_Item" width="22" height="22"/>
+        <image name="TabBarIcon_Rubbish" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LXg-zG-Waq"/>
