@@ -71,18 +71,29 @@
                             <constraint firstAttribute="width" constant="10" id="vfd-Uh-dEV"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njz-mP-Tpe" customClass="MRActivityIndicatorView">
+                        <rect key="frame" x="205" y="28" width="18" height="18"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="0R1-Tz-54W"/>
+                            <constraint firstAttribute="height" constant="18" id="LfA-4F-ChV"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="NLb-pr-DBl" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="37" id="5zW-H8-f2B"/>
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="leading" secondItem="OwD-q1-Td5" secondAttribute="trailing" constant="7" id="6we-XZ-DmZ"/>
                     <constraint firstItem="euZ-li-gpZ" firstAttribute="leading" secondItem="HKi-av-fb3" secondAttribute="leadingMargin" constant="-2" id="8ct-5X-Gqe"/>
                     <constraint firstItem="seG-QH-qQo" firstAttribute="leading" secondItem="NLb-pr-DBl" secondAttribute="trailing" constant="5" id="ALP-Ql-jAW"/>
+                    <constraint firstItem="NLb-pr-DBl" firstAttribute="leading" secondItem="Njz-mP-Tpe" secondAttribute="trailing" constant="14" id="JDU-ie-SXs"/>
                     <constraint firstItem="euZ-li-gpZ" firstAttribute="centerY" secondItem="OwD-q1-Td5" secondAttribute="centerY" constant="-1" id="KXW-WJ-smj"/>
                     <constraint firstItem="OwD-q1-Td5" firstAttribute="centerY" secondItem="HKi-av-fb3" secondAttribute="centerY" constant="-12.5" id="Loy-b3-MfN"/>
                     <constraint firstItem="Hvn-iy-0tw" firstAttribute="leading" secondItem="euZ-li-gpZ" secondAttribute="trailing" constant="8" id="NPf-Z8-5Fa"/>
+                    <constraint firstItem="OwD-q1-Td5" firstAttribute="leading" secondItem="Njz-mP-Tpe" secondAttribute="trailing" constant="12" id="Sbv-Ew-ho8"/>
                     <constraint firstItem="OwD-q1-Td5" firstAttribute="leading" secondItem="seG-QH-qQo" secondAttribute="trailing" constant="-52" id="bCU-Af-4e4"/>
                     <constraint firstItem="seG-QH-qQo" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="33" id="fuD-QG-Lqw"/>
                     <constraint firstItem="euZ-li-gpZ" firstAttribute="centerY" secondItem="Hvn-iy-0tw" secondAttribute="centerY" id="hB3-u0-ilf"/>
+                    <constraint firstItem="Njz-mP-Tpe" firstAttribute="top" secondItem="HKi-av-fb3" secondAttribute="topMargin" constant="20" id="hcd-UT-5KW"/>
                     <constraint firstItem="wn6-TZ-orD" firstAttribute="centerY" secondItem="HKi-av-fb3" secondAttribute="centerY" constant="-12.5" id="q1w-CB-C1t"/>
                 </constraints>
             </tableViewCellContentView>
@@ -96,6 +107,7 @@
                 <outlet property="numberOfContests" destination="wn6-TZ-orD" id="eyq-Kl-YQ5"/>
                 <outlet property="numberOfExpiringContests" destination="seG-QH-qQo" id="SA5-Rm-JcB"/>
                 <outlet property="numberOfPublication" destination="Hvn-iy-0tw" id="xdq-T3-AnW"/>
+                <outlet property="progressDownloadIndicator" destination="Njz-mP-Tpe" id="ZfR-Md-18r"/>
             </connections>
             <point key="canvasLocation" x="317" y="376"/>
         </tableViewCell>

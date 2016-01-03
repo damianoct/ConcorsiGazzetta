@@ -8,9 +8,11 @@
 
 import UIKit
 import MGSwipeTableCell
+import MRProgress
 
 class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
 {
+	@IBOutlet weak var progressDownloadIndicator: MRActivityIndicatorView!
 	@IBOutlet weak var indicator: UIView!
     @IBOutlet weak var numberOfExpiringContests: UILabel!
     @IBOutlet weak var numberOfPublication: UILabel!    
@@ -20,6 +22,9 @@ class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
+		indicator.hidden = true
+		progressDownloadIndicator.tintColor = UIColor.bluGazzettaColor()
+		progressDownloadIndicator.hidden = true
     }
 
 	/**

@@ -18,6 +18,7 @@
 		D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */; };
 		D125147A1C380CA00045B5DC /* DDSRubbishGazzettaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12514791C380CA00045B5DC /* DDSRubbishGazzettaItem.swift */; };
 		D125147C1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */; };
+		D125147E1C394BF10045B5DC /* DDSTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D125147D1C394BF10045B5DC /* DDSTabBarController.swift */; };
 		D13EE2821C329D860048331C /* DDSStoreDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13EE2811C329D860048331C /* DDSStoreDelegate.swift */; };
 		D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */; };
 		D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */; };
@@ -77,6 +78,7 @@
 		D109BD331BCA9226009FC24A /* DDSLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSLoadingViewController.swift; sourceTree = "<group>"; };
 		D12514791C380CA00045B5DC /* DDSRubbishGazzettaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSRubbishGazzettaItem.swift; sourceTree = "<group>"; };
 		D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSRubbishGazzetteTBC.swift; sourceTree = "<group>"; };
+		D125147D1C394BF10045B5DC /* DDSTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSTabBarController.swift; sourceTree = "<group>"; };
 		D13EE2811C329D860048331C /* DDSStoreDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSStoreDelegate.swift; sourceTree = "<group>"; };
 		D155079F1BCAC2C20019635D /* DDSSettingsTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsTBC.swift; sourceTree = "<group>"; };
 		D15507A11BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSettingsGazzetteNumberTBC.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */,
 				D1BC500E1BD6E32800B2B9D6 /* DDSSplitViewController.swift */,
 				D125147B1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift */,
+				D125147D1C394BF10045B5DC /* DDSTabBarController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				D13EE2821C329D860048331C /* DDSStoreDelegate.swift in Sources */,
 				D15507A01BCAC2C20019635D /* DDSSettingsTBC.swift in Sources */,
 				D19E16FF1BD10B9D0098FE0B /* DDSGazzettaCustomCellWithExpiring.swift in Sources */,
+				D125147E1C394BF10045B5DC /* DDSTabBarController.swift in Sources */,
 				D15507A21BCAC2D00019635D /* DDSSettingsGazzetteNumberTBC.swift in Sources */,
 				D1BC500F1BD6E32800B2B9D6 /* DDSSplitViewController.swift in Sources */,
 				D109BD341BCA9226009FC24A /* DDSLoadingViewController.swift in Sources */,

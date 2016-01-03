@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MGSwipeTableCell
 
 class DDSRubbishGazzetteTBC: UITableViewController
 {
@@ -16,13 +17,33 @@ class DDSRubbishGazzetteTBC: UITableViewController
 	
 	override func awakeFromNib()
 	{
+		super.awakeFromNib()
 		fetchedResultController = loadFetchedResultsController()
 	}
 	
     override func viewDidLoad() -> ()
 	{
         super.viewDidLoad()
+
+		/**
+			Register Nibs for cell reusing
+		**/
+		
+		tableView.registerNib(UINib(nibName: DDSGazzetteTBC.classicTableCell,
+			bundle: NSBundle.mainBundle()),
+			forCellReuseIdentifier: DDSGazzetteTBC.classicTableCell)
+		
+		tableView.registerNib(UINib(nibName: DDSGazzetteTBC.contextExpiringTableCell,
+			bundle: NSBundle.mainBundle()),
+			forCellReuseIdentifier: DDSGazzetteTBC.contextExpiringTableCell)
+		
+		self.tableView.dataSource = self
     }
+	
+	override func viewDidAppear(animated: Bool)
+	{
+		self.tableView.reloadData()
+	}
 	
 	private func loadFetchedResultsController() -> NSFetchedResultsController?
 	{
@@ -33,7 +54,7 @@ class DDSRubbishGazzetteTBC: UITableViewController
 		
 		do
 		{
-			fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Gazzetta Cache")
+			fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Rubbish Gazzetta Cache")
 			fetchController.delegate = self
 			try fetchController.performFetch()
 		}
@@ -44,79 +65,68 @@ class DDSRubbishGazzetteTBC: UITableViewController
 		
 		return fetchController
 	}
-
+	
     override func didReceiveMemoryWarning() -> ()
 	{
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
+		if let numberOfRow = fetchedResultController?.fetchedObjects?.count
+		{
+			return numberOfRow
+		}
+		
 		return 0
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	{
+		if let gazzetta = fetchedResultController?.objectAtIndexPath(indexPath) as? DDSRubbishGazzettaItem
+		{
+			if Int(gazzetta.numberOfExpiringContests) > 0 && DDSSettingsWorker.sharedInstance.showDeadlineContests()
+			{
+				return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.contextExpiringTableCell)!
+			}
+		}
+		
+		return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.classicTableCell)!
+	}
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+	{
+		if let gazzetta = fetchedResultController?.objectAtIndexPath(indexPath) as? DDSRubbishGazzettaItem
+		{
+			if let cell = cell as? DDSGazzettaCustomCellWithExpiring
+			{
+				print("Animating: -> \t \(cell.progressDownloadIndicator.isAnimating())")
+				if cell.progressDownloadIndicator.isAnimating()
+				{
+					cell.progressDownloadIndicator.stopAnimating()
+					cell.progressDownloadIndicator.startAnimating()
+				}
+				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+				cell.numberOfContests.text = String(gazzetta.numberOfContests)
+				cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
+				cell.delegate = self
+			}
+			else if let cell = cell as? DDSGazzettaCustomCell
+			{
+				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+				cell.numberOfContests.text = String(gazzetta.numberOfContests)
+				cell.delegate = self
+			}
+		}
+	}
 }
 
 extension DDSRubbishGazzetteTBC : NSFetchedResultsControllerDelegate
@@ -140,9 +150,95 @@ extension DDSRubbishGazzetteTBC : NSFetchedResultsControllerDelegate
 		{
 			case .Insert:
 					refreshBadgeNumber()
+					self.tableView.reloadData()
 					break;
 			default:
 					break;
 		}
 	}
 }
+
+extension DDSRubbishGazzetteTBC : MGSwipeTableCellDelegate
+{
+	private enum CellButton: Int
+	{
+		case Download = 0
+		case Delete = 10
+	}
+	/**
+		Left buttons for cell
+	**/
+	
+	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
+	{
+		let downloadButton = MGSwipeButton(title: "Ripristina",
+			icon: UIImage(named: "Cell_Button_G_Download"),
+			backgroundColor: UIColor.greenReadColor())
+		
+		return [downloadButton] as [AnyObject]
+	}
+	
+	/**
+		Right buttons for cell
+	**/
+	
+	func rightButtons() -> [AnyObject]
+	{
+		let deleteButton = MGSwipeButton(title: "Elimina",
+			icon: UIImage(named: "CellButton_G_Rubbish"),
+			backgroundColor: UIColor.redReadColor())
+		
+		return [deleteButton] as [AnyObject]
+	}
+	
+	private func indexOfButton(forTappedIndex index: Int, andSwipeDirection direction: MGSwipeDirection) -> Int
+	{
+		return direction == .LeftToRight ? index : index + 10
+	}
+	
+	func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool
+	{
+		let buttonIndex = indexOfButton(forTappedIndex: index, andSwipeDirection: direction)
+		let indexOfCell = self.tableView.indexPathForCell(cell)!
+		
+		switch(CellButton(rawValue: buttonIndex)!)
+		{
+			case .Download:
+				if cell is DDSGazzettaCustomCell
+				{
+					(cell as! DDSGazzettaCustomCell).progressDownloadIndicator.hidden = false
+					(cell as! DDSGazzettaCustomCell).progressDownloadIndicator.startAnimating()
+				}
+				else if cell is DDSGazzettaCustomCellWithExpiring
+				{
+					(cell as! DDSGazzettaCustomCellWithExpiring).progressDownloadIndicator.hidden = false
+					(cell as! DDSGazzettaCustomCellWithExpiring).progressDownloadIndicator.startAnimating()
+				}
+				return true
+				
+			case .Delete:
+				print("Tapped Delete")
+				return false
+		}
+		
+	}
+	
+	func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]!
+	{
+		swipeSettings.transition = MGSwipeTransition.Static
+		
+		let indexOfCell = self.tableView.indexPathForCell(cell)!
+		
+		if direction == MGSwipeDirection.LeftToRight
+		{
+			return leftButtons(forCellAtIndexPath: indexOfCell)
+		}
+			
+		else
+		{
+			cell.allowsButtonsWithDifferentWidth = true
+			return rightButtons()
+		}
+	}
+}
+

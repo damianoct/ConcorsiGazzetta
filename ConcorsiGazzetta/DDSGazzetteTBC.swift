@@ -17,7 +17,7 @@ enum AlertAction: String
     case OrderByDateOfPublication = "Data di pubblicazione"
 }
 
-enum CellButton: Int
+private enum CellButton: Int
 {
 	case ToggleRead = 0
 	case Favourite = 1
@@ -99,41 +99,6 @@ class DDSGazzetteTBC: UITableViewController
 		return fetchController
 	}
 	
-	/**
-		Left buttons for cell
-	**/
-	
-	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
-	{
-		let specs = readButtonForGazzetta(atIndexPath: indexOfCell)
-		
-		let toggleReadButton = MGSwipeButton(title: specs.buttonTitle,
-											 icon: specs.buttonImage,
-											 backgroundColor: specs.buttonColor)
-		
-		let favouriteButton = MGSwipeButton(title: "",
-											icon: UIImage(named: "CellButton_G_Favourite"),
-											backgroundColor: UIColor(red: 69.0/255.0, green: 154.0/255.0, blue: 204.0/255.0, alpha: 1.0))
-		
-		return [toggleReadButton, favouriteButton] as [AnyObject]
-	}
-	
-	/**
-		Right buttons for cell
-	**/
-	
-	func rightButtons() -> [AnyObject]
-	{
-		let shareButton = MGSwipeButton(title: "",
-										icon: UIImage(named: "CellButton_G_Share"),
-										backgroundColor: UIColor.bluGazzettaColor())
-		let deleteButton = MGSwipeButton(title: "Elimina",
-										 icon: UIImage(named: "CellButton_G_Rubbish"),
-										 backgroundColor: UIColor.redReadColor())
-		
-		return [deleteButton,shareButton] as [AnyObject]
-	}
-	
     func appSettingsDidChange(notification: NSNotification) -> ()
     {
         tableView.reloadData()
@@ -160,22 +125,6 @@ class DDSGazzetteTBC: UITableViewController
 			self.tableView.reloadData()
 		}
 	}
-	
-	private func readButtonForGazzetta(atIndexPath index: NSIndexPath) -> (buttonTitle: String, buttonImage: UIImage, buttonColor: UIColor)
-	{
-		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
-		{
-			return !gazzetta.read ? ("",
-									 UIImage(named: "CellButton_G_CheckMark")!,
-									 UIColor.greenReadColor()) :
-									("",
-								     UIImage(named: "CellButton_G_UncheckMark")!,
-									 UIColor.redReadColor())
-		}
-		
-		return ("", UIImage(named: "CellButton_G_CheckMark")!, UIColor.greenReadColor())
-	}
-	
     
     //MARK: Design UI Functions
     
@@ -223,17 +172,18 @@ class DDSGazzetteTBC: UITableViewController
         
         return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.classicTableCell)!
     }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-    {
-        if let cell = cell as? DDSGazzettaCustomCellWithExpiring
-        {
-            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
-            {
-                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-                cell.numberOfContests.text = String(gazzetta.contests.count)
-                cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
+	
+	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+	{
+		
+		if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
+		{
+			if let cell = cell as? DDSGazzettaCustomCellWithExpiring
+			{
+				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+				cell.numberOfContests.text = String(gazzetta.contests.count)
+				cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
 				cell.delegate = self
 				
 				if gazzetta.read
@@ -244,15 +194,12 @@ class DDSGazzetteTBC: UITableViewController
 				{
 					cell.indicator.hidden = false
 				}
-            }
-        }
-        else if let cell = cell as? DDSGazzettaCustomCell
-        {
-            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
-            {
-                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-                cell.numberOfContests.text = String(gazzetta.contests.count)
+			}
+			else if let cell = cell as? DDSGazzettaCustomCell
+			{
+				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+				cell.numberOfContests.text = String(gazzetta.contests.count)
 				cell.delegate = self
 				if gazzetta.read
 				{
@@ -262,10 +209,52 @@ class DDSGazzetteTBC: UITableViewController
 				{
 					cell.indicator.hidden = false
 				}
-            }
-        }
-    }
-    
+			}
+		}
+	}
+	
+//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//        if let cell = cell as? DDSGazzettaCustomCellWithExpiring
+//        {
+//            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
+//            {
+//                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+//                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+//                cell.numberOfContests.text = String(gazzetta.contests.count)
+//                cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
+//				cell.delegate = self
+//				
+//				if gazzetta.read
+//				{
+//					cell.indicator.hidden = true
+//				}
+//				else
+//				{
+//					cell.indicator.hidden = false
+//				}
+//            }
+//        }
+//        else if let cell = cell as? DDSGazzettaCustomCell
+//        {
+//            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
+//            {
+//                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+//                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+//                cell.numberOfContests.text = String(gazzetta.contests.count)
+//				cell.delegate = self
+//				if gazzetta.read
+//				{
+//					cell.indicator.hidden = true
+//				}
+//				else
+//				{
+//					cell.indicator.hidden = false
+//				}
+//            }
+//        }
+//    }
+	
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         performSegueWithIdentifier("segueDetail", sender: indexPath)
@@ -428,8 +417,60 @@ class DDSGazzetteTBC: UITableViewController
 	}
 }
 
+//MARK: MGSwipeTableCellDelegate
+
 extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 {
+	private func readButtonForGazzetta(atIndexPath index: NSIndexPath) -> (buttonTitle: String, buttonImage: UIImage, buttonColor: UIColor)
+	{
+		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
+		{
+			return !gazzetta.read ? ("",
+				UIImage(named: "CellButton_G_CheckMark")!,
+				UIColor.greenReadColor()) :
+				("",
+					UIImage(named: "CellButton_G_UncheckMark")!,
+					UIColor.redReadColor())
+		}
+		
+		return ("", UIImage(named: "CellButton_G_CheckMark")!, UIColor.greenReadColor())
+	}
+	
+	/**
+		Left buttons for cell
+	**/
+	
+	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
+	{
+		let specs = readButtonForGazzetta(atIndexPath: indexOfCell)
+		
+		let toggleReadButton = MGSwipeButton(title: specs.buttonTitle,
+			icon: specs.buttonImage,
+			backgroundColor: specs.buttonColor)
+		
+		let favouriteButton = MGSwipeButton(title: "",
+			icon: UIImage(named: "CellButton_G_Favourite"),
+			backgroundColor: UIColor(red: 69.0/255.0, green: 154.0/255.0, blue: 204.0/255.0, alpha: 1.0))
+		
+		return [toggleReadButton] as [AnyObject]
+	}
+	
+	/**
+		Right buttons for cell
+	**/
+	
+	func rightButtons() -> [AnyObject]
+	{
+		let shareButton = MGSwipeButton(title: "",
+			icon: UIImage(named: "CellButton_G_Share"),
+			backgroundColor: UIColor.bluGazzettaColor())
+		let deleteButton = MGSwipeButton(title: "Elimina",
+			icon: UIImage(named: "CellButton_G_Rubbish"),
+			backgroundColor: UIColor.redReadColor())
+		
+		return [deleteButton,shareButton] as [AnyObject]
+	}
+	
 	private func indexOfButton(forTappedIndex index: Int, andSwipeDirection direction: MGSwipeDirection) -> Int
 	{
 		return direction == .LeftToRight ? index : index + 10

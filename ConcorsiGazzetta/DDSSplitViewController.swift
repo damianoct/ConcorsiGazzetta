@@ -14,6 +14,7 @@ class DDSSplitViewController: UISplitViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+		self.view.backgroundColor = UIColor.bluGazzettaColor()
         self.preferredDisplayMode = .AllVisible
 		self.setNeedsStatusBarAppearanceUpdate()
         // Do any additional setup after loading the view.
@@ -23,14 +24,20 @@ class DDSSplitViewController: UISplitViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-	// MARK: Status Bar Light
 	
-	override func preferredStatusBarStyle() -> UIStatusBarStyle
+	override func viewWillAppear(animated: Bool)
 	{
-		return .LightContent
+		super.viewWillAppear(animated)
+		self.view.setNeedsDisplay()
+		self.view.setNeedsLayout()
 	}
 	
+//	override func viewDidAppear(animated: Bool)
+//	{
+//		super.viewDidAppear(animated)
+//		self.view.setNeedsLayout()
+//		self.view.setNeedsDisplay()
+//	}
     /*
     // MARK: - Navigation
 

@@ -37,7 +37,7 @@
                     <connections>
                         <segue destination="V5H-q7-QN2" kind="relationship" relationship="viewControllers" id="w5h-sI-UoV"/>
                         <segue destination="6Ya-Kr-lVB" kind="relationship" relationship="viewControllers" id="Vxa-JN-GqW"/>
-                        <segue destination="dAO-lv-lJ0" kind="relationship" relationship="viewControllers" id="aMh-or-X58"/>
+                        <segue destination="dAO-lv-lJ0" kind="relationship" relationship="viewControllers" id="JSg-dB-ogX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NP-Xb-H3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -590,43 +590,15 @@
             </objects>
             <point key="canvasLocation" x="-227" y="-1753"/>
         </scene>
-        <!--Cestino-->
-        <scene sceneID="uvS-8M-WVg">
-            <objects>
-                <tableViewController storyboardIdentifier="Rubbish" id="Wuf-W0-ZZg" customClass="DDSRubbishGazzetteTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pbw-os-j6G">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7e7-pm-P8I">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7e7-pm-P8I" id="S30-FQ-bKb">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Wuf-W0-ZZg" id="I4o-7o-mO3"/>
-                            <outlet property="delegate" destination="Wuf-W0-ZZg" id="bk1-Gw-jVC"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Cestino" id="Ysp-o3-J4P"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eJ-wm-rZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1465" y="-1753.5"/>
-        </scene>
         <!--Cestino Navigation-->
         <scene sceneID="XRs-V6-ZYt">
             <objects>
                 <navigationController title="Cestino Navigation" automaticallyAdjustsScrollViewInsets="NO" id="jIR-Gu-NWq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X8E-s4-u9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="X8E-s4-u9r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.18431372940540314" green="0.5372549295425415" blue="0.74117648601531982" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -634,12 +606,62 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Wuf-W0-ZZg" kind="relationship" relationship="rootViewController" id="BXb-8P-nat"/>
+                        <segue destination="1Ne-k1-FRs" kind="relationship" relationship="rootViewController" id="woa-ZS-ogu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3C-IH-iMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="593" y="-1753.5"/>
+        </scene>
+        <!--Cestino Table View-->
+        <scene sceneID="pQh-WV-N9c">
+            <objects>
+                <tableViewController title="Cestino Table View" automaticallyAdjustsScrollViewInsets="NO" id="1Ne-k1-FRs" customClass="DDSRubbishGazzetteTBC" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="LlP-ya-GHS">
+                        <rect key="frame" x="0.0" y="44" width="600" height="507"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ojF-Hu-Vav">
+                                <rect key="frame" x="0.0" y="28" width="600" height="74"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ojF-Hu-Vav" id="kQ8-oM-nTA">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Ne-k1-FRs" id="atc-ra-bub"/>
+                            <outlet property="delegate" destination="1Ne-k1-FRs" id="AMc-eb-N2L"/>
+                        </connections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Cestino" id="dmE-ay-bEX">
+                        <barButtonItem key="backBarButtonItem" title="Cestino" id="EhU-Sc-ejo"/>
+                        <barButtonItem key="leftBarButtonItem" image="Order_ToolBar_Item" id="sRp-We-zmZ">
+                            <connections>
+                                <action selector="orderButtonPressed:" destination="1Ne-k1-FRs" id="aKB-Q3-hiz"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="v4h-I1-B93">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="1Ne-k1-FRs" id="nUP-GX-zJV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Settings_ToolBar_Item" id="4nX-zH-lOF">
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="1Ne-k1-FRs" id="InU-qv-hZ0"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7z-ze-Mzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="-1753"/>
         </scene>
     </scenes>
     <resources>
@@ -655,6 +677,6 @@
         <image name="TabBarIcon_Rubbish" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LXg-zG-Waq"/>
+        <segue reference="ocS-ui-LwH"/>
     </inferredMetricsTieBreakers>
 </document>

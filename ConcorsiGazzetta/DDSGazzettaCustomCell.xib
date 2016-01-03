@@ -54,12 +54,22 @@
                             <constraint firstAttribute="width" constant="10" id="vvD-0f-wWI"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScV-6N-8Ua" customClass="MRActivityIndicatorView">
+                        <rect key="frame" x="205" y="28" width="18" height="18"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="dUz-DN-3b3"/>
+                            <constraint firstAttribute="height" constant="18" id="hDy-O2-y4a"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ne5-oC-0MB" firstAttribute="leading" secondItem="gwy-cP-XqL" secondAttribute="trailing" constant="8" id="5vq-Ie-ABt"/>
+                    <constraint firstItem="9Vx-WU-oH4" firstAttribute="leading" secondItem="ScV-6N-8Ua" secondAttribute="trailing" constant="16" id="Amc-Mv-zvL"/>
                     <constraint firstItem="gwy-cP-XqL" firstAttribute="top" secondItem="A5p-3T-Dcv" secondAttribute="topMargin" constant="10" id="JQB-ej-K9t"/>
                     <constraint firstItem="gwy-cP-XqL" firstAttribute="leading" secondItem="A5p-3T-Dcv" secondAttribute="leadingMargin" constant="-2" id="ROt-Jg-Yyt"/>
                     <constraint firstItem="gwy-cP-XqL" firstAttribute="centerY" secondItem="ne5-oC-0MB" secondAttribute="centerY" id="WjZ-Zb-ga1"/>
+                    <constraint firstItem="ScV-6N-8Ua" firstAttribute="top" secondItem="A5p-3T-Dcv" secondAttribute="topMargin" constant="20" id="XrG-81-cF3"/>
                     <constraint firstItem="yqj-97-mml" firstAttribute="centerY" secondItem="A5p-3T-Dcv" secondAttribute="centerY" constant="0.5" id="cFb-xU-mTQ"/>
                     <constraint firstItem="yqj-97-mml" firstAttribute="leading" secondItem="9Vx-WU-oH4" secondAttribute="trailing" constant="8" id="fY0-9m-7ey"/>
                     <constraint firstItem="9Vx-WU-oH4" firstAttribute="centerY" secondItem="A5p-3T-Dcv" secondAttribute="centerY" constant="0.5" id="qc2-MY-lSu"/>
@@ -74,8 +84,9 @@
                 <outlet property="indicator" destination="gwy-cP-XqL" id="hMT-hL-6K5"/>
                 <outlet property="numberOfContests" destination="yqj-97-mml" id="vql-fe-G92"/>
                 <outlet property="numberOfPublication" destination="ne5-oC-0MB" id="wPF-CT-EUb"/>
+                <outlet property="progressDownloadIndicator" destination="ScV-6N-8Ua" id="l7F-s2-tKt"/>
             </connections>
-            <point key="canvasLocation" x="279" y="584"/>
+            <point key="canvasLocation" x="199" y="659"/>
         </tableViewCell>
     </objects>
     <resources>
