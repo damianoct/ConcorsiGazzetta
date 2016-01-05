@@ -13,7 +13,12 @@ class DDSSettingsTBC: UITableViewController
     override func viewDidLoad() -> ()
     {
         super.viewDidLoad()
-        
+		
+		NSNotificationCenter.defaultCenter().addObserver(self,
+														 selector: "appSettingsDidChange:",
+														 name: NSUserDefaultsDidChangeNotification,
+														 object: nil)
+		
         //tableView.backgroundColor = UIColor.clearColor() // -> da usare se lo sfondo del NavController è fisso
         
         //setBlurEffect()
@@ -24,7 +29,12 @@ class DDSSettingsTBC: UITableViewController
     {
         super.didReceiveMemoryWarning()
     }
-    
+	
+	func appSettingsDidChange(notification: NSNotification) -> ()
+	{
+		tableView.reloadData()
+	}
+	
     private func setBackgroundTransparentWithImage()
     {
         let image = UIImage(named: "newspaper_background_ingiallito.jpg")

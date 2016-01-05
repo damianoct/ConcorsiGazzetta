@@ -8,15 +8,19 @@
 
 import UIKit
 
-class DDSTabBarController: UITabBarController {
+class DDSTabBarController: UITabBarController
+{
 
-    override func viewDidLoad() {
+    override func viewDidLoad() -> ()
+	{
         super.viewDidLoad()
+		//self.tabBar.delegate = self
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() -> ()
+	{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -31,5 +35,17 @@ class DDSTabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension DDSTabBarController : UITabBarControllerDelegate
+{
+	override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem)
+	{
+		print(item.badgeValue)
+		//refresh badge item
+		if let _ = item.badgeValue
+		{
+			item.badgeValue = nil
+		}
+	}
 }

@@ -44,6 +44,7 @@
 		D1EA9AFF1BCC094400487174 /* DDSGazzetteTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9AFE1BCC094400487174 /* DDSGazzetteTBC.swift */; };
 		D1EA9B041BCC1AB900487174 /* DDSCravattaNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA9B021BCC1AB900487174 /* DDSCravattaNavBarViewController.swift */; };
 		D1EA9B051BCC1AB900487174 /* DDSCravattaNavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA9B031BCC1AB900487174 /* DDSCravattaNavBarViewController.xib */; };
+		D1EE130A1C3B06210005D8F5 /* DDSGazzettaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EE13091C3B06210005D8F5 /* DDSGazzettaCell.swift */; };
 		D1F47D671BCC5443005CF5B5 /* DDSSearchTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		D1EA9AFE1BCC094400487174 /* DDSGazzetteTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSGazzetteTBC.swift; sourceTree = "<group>"; };
 		D1EA9B021BCC1AB900487174 /* DDSCravattaNavBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSCravattaNavBarViewController.swift; sourceTree = "<group>"; };
 		D1EA9B031BCC1AB900487174 /* DDSCravattaNavBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDSCravattaNavBarViewController.xib; sourceTree = "<group>"; };
+		D1EE13091C3B06210005D8F5 /* DDSGazzettaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSGazzettaCell.swift; sourceTree = "<group>"; };
 		D1F47D661BCC5443005CF5B5 /* DDSSearchTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSSearchTBC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 				D109BD241BCA91CC009FC24A /* DDSGazzettaWorker.swift */,
 				D109BD251BCA91CC009FC24A /* DDSGazzetteStore.swift */,
 				D13EE2811C329D860048331C /* DDSStoreDelegate.swift */,
+				D1EE13091C3B06210005D8F5 /* DDSGazzettaCell.swift */,
 			);
 			name = Model;
 			path = ../../iOSConcorsiGazzetta/iOSConcorsiGazzetta;
@@ -463,6 +466,7 @@
 				D15507A61BCAC4A70019635D /* DDSNavigationController.swift in Sources */,
 				D1EA9AFF1BCC094400487174 /* DDSGazzetteTBC.swift in Sources */,
 				D1DB1E661BCA8E4B0076F48C /* ConcorsiGazzetta.xcdatamodeld in Sources */,
+				D1EE130A1C3B06210005D8F5 /* DDSGazzettaCell.swift in Sources */,
 				D109BD281BCA91CC009FC24A /* DDSGazzettaItem.swift in Sources */,
 				D15507AB1BCB039C0019635D /* DDSGazzettaCustomCell.swift in Sources */,
 				D125147C1C380D7F0045B5DC /* DDSRubbishGazzetteTBC.swift in Sources */,

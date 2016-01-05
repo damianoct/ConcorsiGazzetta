@@ -9,6 +9,7 @@
 import UIKit
 import MGSwipeTableCell
 import MRProgress
+import CoreData
 
 class DDSGazzettaCustomCell: MGSwipeTableCell
 {
@@ -30,7 +31,8 @@ class DDSGazzettaCustomCell: MGSwipeTableCell
 	
 	/**
 		Override delle funzioni setHighlighted e setSelected per non "spazzare via"
-		UIView della cell quando quest'ultima è selezionata
+		UIView della cell quando quest'ultima è selezionata 
+		(i metodi originali cambiano il background alla cella e quindi nascondono la UIView)
 	**/
 
 	override func setHighlighted(highlighted: Bool, animated: Bool)
@@ -52,5 +54,28 @@ class DDSGazzettaCustomCell: MGSwipeTableCell
 		}
 		// Configure the view for the selected state
 	}
+}
+
+extension DDSGazzettaCustomCell : DDSGazzettaCell
+{
+	func configureCell(forGazzetta gazzetta: DDSGazzettaItem)
+	{
+		dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+		numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+		numberOfContests.text = String(gazzetta.contests.count)
+		
+		if gazzetta.read
+		{
+			indicator.hidden = true
+		}
+		else
+		{
+			indicator.hidden = false
+		}
+	}
 	
+	func configureCell(forRubbishGazzetta gazzetta: DDSRubbishGazzettaItem)
+	{
+		
+	}
 }

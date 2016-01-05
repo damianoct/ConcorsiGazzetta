@@ -28,7 +28,7 @@ class DDSLoadingViewController: UIViewController
 		else
 		{
 			print("No Internet Connection!");
-			onLoadingComplete()
+			onComplete()
 		}
 		
         
@@ -86,7 +86,7 @@ extension DDSLoadingViewController : DDSStoreDelegate
 {
 	//MARK: Gazzette Store Delegate
 	
-	func onLoadingComplete()
+	func onComplete()
 	{
 		self.circularActivityIndicator.stopAnimating()
 		

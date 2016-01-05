@@ -10,10 +10,11 @@ import UIKit
 import CoreData
 import MGSwipeTableCell
 
-class DDSRubbishGazzetteTBC: UITableViewController
+class DDSRubbishGazzetteTBC: UITableViewController, DDSStoreDelegate
 {
-
 	var fetchedResultController : NSFetchedResultsController?
+	
+	var request : String = ""
 	
 	override func awakeFromNib()
 	{
@@ -45,6 +46,12 @@ class DDSRubbishGazzetteTBC: UITableViewController
 		self.tableView.reloadData()
 	}
 	
+	func onComplete()
+	{
+		print("Gazzetta Scaricata")
+	}
+	
+	
 	private func loadFetchedResultsController() -> NSFetchedResultsController?
 	{
 		var fetchController : NSFetchedResultsController
@@ -54,7 +61,7 @@ class DDSRubbishGazzetteTBC: UITableViewController
 		
 		do
 		{
-			fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Rubbish Gazzetta Cache")
+			fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DDSGazzettaStore.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
 			fetchController.delegate = self
 			try fetchController.performFetch()
 		}
@@ -106,7 +113,7 @@ class DDSRubbishGazzetteTBC: UITableViewController
 		{
 			if let cell = cell as? DDSGazzettaCustomCellWithExpiring
 			{
-				print("Animating: -> \t \(cell.progressDownloadIndicator.isAnimating())")
+				//print("Animating: -> \t \(cell.progressDownloadIndicator.isAnimating())")
 				if cell.progressDownloadIndicator.isAnimating()
 				{
 					cell.progressDownloadIndicator.stopAnimating()
@@ -157,6 +164,8 @@ extension DDSRubbishGazzetteTBC : NSFetchedResultsControllerDelegate
 		}
 	}
 }
+
+//MARK: MGSwipeTableCellDelegate
 
 extension DDSRubbishGazzetteTBC : MGSwipeTableCellDelegate
 {
@@ -214,6 +223,14 @@ extension DDSRubbishGazzetteTBC : MGSwipeTableCellDelegate
 					(cell as! DDSGazzettaCustomCellWithExpiring).progressDownloadIndicator.hidden = false
 					(cell as! DDSGazzettaCustomCellWithExpiring).progressDownloadIndicator.startAnimating()
 				}
+				
+				if let gazzetta = fetchedResultController?.objectAtIndexPath(indexOfCell) as? DDSRubbishGazzettaItem
+				{
+					request = String(gazzetta.dateOfPublication)
+					DDSGazzettaStore.sharedInstance.setLoaderDelegate(self)
+					DDSGazzettaStore.sharedInstance.downloadGazzetta(withDate: gazzetta.dateOfPublication)
+				}
+				
 				return true
 				
 			case .Delete:
@@ -241,4 +258,6 @@ extension DDSRubbishGazzetteTBC : MGSwipeTableCellDelegate
 		}
 	}
 }
+
+
 

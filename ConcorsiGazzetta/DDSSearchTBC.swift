@@ -183,7 +183,7 @@ extension DDSSearchTBC: UISearchResultsUpdating
 {
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
-        guard searchController.active else { return } //vedere meglio GUARD
+        guard searchController.active else { return }
         
         filterGazzettaString = searchController.searchBar.text
     }

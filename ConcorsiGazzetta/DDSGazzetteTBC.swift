@@ -154,10 +154,14 @@ class DDSGazzetteTBC: UITableViewController
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        //return DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number
 		let fetchRequest = NSFetchRequest(entityName: "Gazzetta")
 
-		return DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+		let totalNumberOfGazzette = DDSGazzettaStore.sharedInstance.managedObjectContext.countForFetchRequest(fetchRequest, error: nil)
+		let gazzetteToView = DDSSettingsWorker.sharedInstance.numberOfGazzetteToView().number
+		
+		return totalNumberOfGazzette
+
+		//return (totalNumberOfGazzette < gazzetteToView) ? totalNumberOfGazzette : gazzetteToView
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -173,87 +177,15 @@ class DDSGazzetteTBC: UITableViewController
         return tableView.dequeueReusableCellWithIdentifier(DDSGazzetteTBC.classicTableCell)!
     }
 	
-	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) -> ()
 	{
+		(cell as! MGSwipeTableCell).delegate = self
 		
 		if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
 		{
-			if let cell = cell as? DDSGazzettaCustomCellWithExpiring
-			{
-				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-				cell.numberOfContests.text = String(gazzetta.contests.count)
-				cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
-				cell.delegate = self
-				
-				if gazzetta.read
-				{
-					cell.indicator.hidden = true
-				}
-				else
-				{
-					cell.indicator.hidden = false
-				}
-			}
-			else if let cell = cell as? DDSGazzettaCustomCell
-			{
-				cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-				cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-				cell.numberOfContests.text = String(gazzetta.contests.count)
-				cell.delegate = self
-				if gazzetta.read
-				{
-					cell.indicator.hidden = true
-				}
-				else
-				{
-					cell.indicator.hidden = false
-				}
-			}
+			(cell as! DDSGazzettaCell).configureCell(forGazzetta: gazzetta)
 		}
 	}
-	
-//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        if let cell = cell as? DDSGazzettaCustomCellWithExpiring
-//        {
-//            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
-//            {
-//                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-//                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-//                cell.numberOfContests.text = String(gazzetta.contests.count)
-//                cell.numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
-//				cell.delegate = self
-//				
-//				if gazzetta.read
-//				{
-//					cell.indicator.hidden = true
-//				}
-//				else
-//				{
-//					cell.indicator.hidden = false
-//				}
-//            }
-//        }
-//        else if let cell = cell as? DDSGazzettaCustomCell
-//        {
-//            if let gazzetta = fetchResultController?.objectAtIndexPath(indexPath) as? DDSGazzettaItem
-//            {
-//                cell.dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
-//                cell.numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
-//                cell.numberOfContests.text = String(gazzetta.contests.count)
-//				cell.delegate = self
-//				if gazzetta.read
-//				{
-//					cell.indicator.hidden = true
-//				}
-//				else
-//				{
-//					cell.indicator.hidden = false
-//				}
-//            }
-//        }
-//    }
 	
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -277,35 +209,6 @@ class DDSGazzetteTBC: UITableViewController
 			}
 		}
     }
-	
-	/*override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
-	{
-		let more = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "")
-		{ action, index in
-			print("more button tapped")
-		}
-		more.backgroundColor = UIColor(patternImage: UIImage(named: "Glasses")!)
-		
-		let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-			print("favorite button tapped")
-		}
-		favorite.backgroundColor = UIColor.orangeColor()
-		
-		let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
-			print("share button tapped")
-		}
-		share.backgroundColor = UIColor.blueColor()
-		
-		return [share, favorite, more]
-	}
-	
-	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-	{
-		// the cells you would like the actions to appear needs to be editable
-		return true
-	}*/
-	
-	
 	
     //MARK: Ordering Function
 	
@@ -365,9 +268,6 @@ class DDSGazzetteTBC: UITableViewController
         }
         
         presentViewController(alertSheetController, animated: true, completion: nil)
-        
-        
-        
     }
     //MARK: IBAction Search
     
@@ -421,19 +321,22 @@ class DDSGazzetteTBC: UITableViewController
 
 extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 {
-	private func readButtonForGazzetta(atIndexPath index: NSIndexPath) -> (buttonTitle: String, buttonImage: UIImage, buttonColor: UIColor)
+	private func readButtonForGazzetta(atIndexPath index: NSIndexPath) -> MGSwipeButton
 	{
+		
+		let markAsReadButton = MGSwipeButton(title: "",
+											 icon: UIImage(named: "CellButton_G_CheckMark")!,
+											 backgroundColor: UIColor.greenColor())
+		let markAsUnreadButton = MGSwipeButton(title: "",
+											   icon: UIImage(named: "CellButton_G_UncheckMark")!,
+											backgroundColor: UIColor.redReadColor())
+		
 		if let gazzetta = fetchResultController?.objectAtIndexPath(index) as? DDSGazzettaItem
 		{
-			return !gazzetta.read ? ("",
-				UIImage(named: "CellButton_G_CheckMark")!,
-				UIColor.greenReadColor()) :
-				("",
-					UIImage(named: "CellButton_G_UncheckMark")!,
-					UIColor.redReadColor())
+			return !gazzetta.read ? markAsReadButton : markAsUnreadButton
 		}
 		
-		return ("", UIImage(named: "CellButton_G_CheckMark")!, UIColor.greenReadColor())
+		return markAsReadButton
 	}
 	
 	/**
@@ -442,17 +345,7 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 	
 	private func leftButtons(forCellAtIndexPath indexOfCell: NSIndexPath) -> [AnyObject]
 	{
-		let specs = readButtonForGazzetta(atIndexPath: indexOfCell)
-		
-		let toggleReadButton = MGSwipeButton(title: specs.buttonTitle,
-			icon: specs.buttonImage,
-			backgroundColor: specs.buttonColor)
-		
-		let favouriteButton = MGSwipeButton(title: "",
-			icon: UIImage(named: "CellButton_G_Favourite"),
-			backgroundColor: UIColor(red: 69.0/255.0, green: 154.0/255.0, blue: 204.0/255.0, alpha: 1.0))
-		
-		return [toggleReadButton] as [AnyObject]
+		return [readButtonForGazzetta(atIndexPath: indexOfCell)] as [AnyObject]
 	}
 	
 	/**
@@ -533,7 +426,7 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 		{
 			expansionSettings.buttonIndex = 0
 			expansionSettings.fillOnTrigger = true
-			expansionSettings.threshold = 1.8
+			expansionSettings.threshold = 2.5
 			
 			return leftButtons(forCellAtIndexPath: indexOfCell)
 		}
@@ -547,8 +440,8 @@ extension DDSGazzetteTBC : MGSwipeTableCellDelegate
 }
 
 extension DDSGazzetteTBC : DDSStoreDelegate
-{
-	func onLoadingComplete()
+{	
+	func onComplete()
 	{
 		print("On Loading Complete -> Aggiorno il fetch controller")
 		fetchResultController = loadFetchedResultsController()
@@ -587,7 +480,9 @@ extension DDSGazzetteTBC: NSFetchedResultsControllerDelegate
 							self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
 							DDSGazzettaStore.sharedInstance.saveDataObjects()
 							break;
-			default: break
+			default:
+							self.tableView.reloadData()
+							break
 		}
 	}
 }

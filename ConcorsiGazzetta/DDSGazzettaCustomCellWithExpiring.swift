@@ -26,10 +26,11 @@ class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
 		progressDownloadIndicator.tintColor = UIColor.bluGazzettaColor()
 		progressDownloadIndicator.hidden = true
     }
-
+	
 	/**
-		Override delle funzioni setHighlighted e setSelected per non "spazzare via" 
+		Override delle funzioni setHighlighted e setSelected per non "spazzare via"
 		UIView della cell quando quest'ultima è selezionata
+		(i metodi originali cambiano il background alla cella e quindi nascondono la UIView)
 	**/
 	
 	override func setHighlighted(highlighted: Bool, animated: Bool)
@@ -51,5 +52,29 @@ class DDSGazzettaCustomCellWithExpiring: MGSwipeTableCell
 		}
         // Configure the view for the selected state
     }
-    
+}
+
+extension DDSGazzettaCustomCellWithExpiring: DDSGazzettaCell
+{
+	func configureCell(forGazzetta gazzetta: DDSGazzettaItem)
+	{
+		dateOfPublication.text = NSDateFormatter.getStringFromDateFormatter().stringFromDate(gazzetta.dateOfPublication)
+		numberOfPublication.text = "Edizione n. " + String(gazzetta.numberOfPublication)
+		numberOfContests.text = String(gazzetta.contests.count)
+		numberOfExpiringContests.text = String(gazzetta.numberOfExpiringContests)
+		
+		if gazzetta.read
+		{
+			indicator.hidden = true
+		}
+		else
+		{
+			indicator.hidden = false
+		}
+	}
+	
+	func configureCell(forRubbishGazzetta gazzetta: DDSRubbishGazzettaItem)
+	{
+		
+	}
 }

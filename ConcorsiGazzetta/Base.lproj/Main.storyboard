@@ -23,7 +23,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="rIY-go-Ead">
             <objects>
-                <tabBarController id="0f4-Ib-3zv" sceneMemberID="viewController">
+                <tabBarController id="0f4-Ib-3zv" customClass="DDSTabBarController" customModule="ConcorsiGazzetta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="0Uy-Nn-hvW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
